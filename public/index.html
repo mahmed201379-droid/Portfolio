@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayem Ahamed - AI Engineer & LLM Researcher</title>
+    
+    <!-- Tailwind + Fonts + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Open+Sans:wght@400;600&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto py-4 px-6 flex justify-between items-center">
+            <div class="font-bold text-2xl primary-text">Sayem<span class="accent-text">.dev</span></div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#publications" class="nav-link">Publications</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menuToggle" class="focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </nav>
+        <div id="mobileMenu" class="hidden md:hidden bg-white w-full py-4 px-6 shadow-md">
+            <div class="flex flex-col space-y-4">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#publications" class="nav-link">Publications</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="hero-content flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-3/5 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 fade-in">
+                        Hi, I'm <span class="primary-text">Sayem Ahamed</span>
+                    </h1>
+                    <h2 class="text-xl md:text-2xl text-gray-600 mb-8 fade-in" style="animation-delay: 0.2s;">
+                        <span class="inline-block">AI Engineer</span> 
+                        <span class="inline-block mx-2">|</span> 
+                        <span class="inline-block">LLM Researcher</span> 
+                        <span class="inline-block mx-2">|</span> 
+                        <span class="inline-block">Agentic AI Developer</span>
+                    </h2>
+                    <p class="text-lg text-gray-700 mb-8 fade-in" style="animation-delay: 0.4s;">
+                        I design and develop intelligent AI systems with a strong focus on Large Language Models (LLMs), 
+                        Retrieval-Augmented Generation (RAG), and Agentic AI. I am currently working as an 
+                        <strong>AI Engineer at EATL Innovation Hub Ltd</strong>, where I build practical applications in 
+                        RAG, multimodal learning, and AI agents.
+                    </p>
+                    <div class="hero-buttons flex flex-wrap gap-4 fade-in" style="animation-delay: 0.6s;">
+                        <a href="https://drive.usercontent.google.com/u/0/uc?id=1yUdw5T41oG6X5PF1MgDh9ffD-e6t1oU-&export=download" class="primary-btn flex items-center">
+                            <i class="fas fa-download mr-2"></i> Download CV
+                        </a>
+                        <a href="#projects" class="secondary-btn flex items-center">
+                            <i class="fas fa-laptop-code mr-2"></i> Explore Projects
+                        </a>
+                        <a href="#contact" class="secondary-btn flex items-center">
+                            <i class="fas fa-envelope mr-2"></i> Contact Me
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-2/5 flex justify-center fade-in" style="animation-delay: 0.8s;">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 absolute opacity-20 transform -translate-x-4 translate-y-4"></div>
+                        <div class="w-64 h-64 md:w-80 md:h-80 bg-white rounded-full border-8 border-white shadow-xl overflow-hidden relative z-10 flex items-center justify-center">
+                            <div class="text-8xl text-gray-300">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center fade-in">About Me</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white p-8 rounded-lg shadow-md fade-in" style="animation-delay: 0.2s;">
+                    <p class="mb-6 text-lg">
+                        I'm a Computer Science graduate from Bangladesh, passionate about building real-world AI solutions. 
+                        My research journey started in deep learning and medical AI, but now my primary focus has shifted 
+                        to Large Language Models (LLMs) and advanced Retrieval-Augmented Generation (RAG). I have developed 
+                        applications like a RAG-powered academic assistant and am exploring agentic AI systems that combine 
+                        reasoning, planning, and retrieval for real-world deployment.
+                    </p>
+                    <p class="text-lg">
+                        My long-term goal is to pursue a research-based master's degree, secure a research internship 
+                        at a Big Tech company, and eventually launch my own AI startup that combines LLMs, RAG, and 
+                        real-world applications to make a global impact.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Focus Section -->
+<section id="research" class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12 text-center fade-in">Research Focus</h2>
+        
+        <div class="max-w-4xl mx-auto bg-gray-50 p-8 rounded-lg shadow-md fade-in" style="animation-delay: 0.2s;">
+            <p class="text-lg mb-6">
+                My research journey began in <strong>deep learning and medical image analysis</strong>, 
+                where I explored attention mechanisms, hybrid CNN models, and intelligent diagnostic systems. 
+                Over time, my focus has shifted towards <strong>Large Language Models (LLMs)</strong> and 
+                <strong>Retrieval-Augmented Generation (RAG)</strong>, reflecting the global shift towards 
+                explainable and human-centered AI.
+            </p>
+
+            <p class="text-lg mb-6">
+                Currently, I am working on developing advanced RAG architectures, including 
+                <strong>multimodal RAG</strong>, <strong>agentic RAG</strong>, and 
+                <strong>agentic AI systems</strong> that combine reasoning, planning, and retrieval. 
+                These approaches aim to bridge the gap between autonomous AI agents and 
+                practical real-world applications, especially in education, healthcare, 
+                and research support.
+            </p>
+
+            <p class="text-lg">
+                My broader vision is to contribute to building the next generation of 
+                <strong>AI-powered knowledge systems</strong> that are reliable, 
+                interpretable, and capable of augmenting human decision-making in critical domains.
+            </p>
+        </div>
+    </div>
+</section>
+
+    <!-- Projects, Skills, Publications, Contact, Footer remain same -->
+    <!-- (Updated content will be added in respective sections later) -->
+
+    <!-- Projects Section -->
+<section id="projects" class="py-16">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12 text-center fade-in">Featured Projects</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Project 1: RAG Academic Assistant -->
+            <div class="project-card bg-white p-6 fade-in" style="animation-delay: 0.2s;">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold">RAG-Based Academic Assistant</h3>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Completed</span>
+                </div>
+                <p class="text-gray-700 mb-4">
+                    Developed a Retrieval-Augmented Generation (RAG) application that allows students to interact with 
+                    academic textbooks and generate accurate, context-aware answers. Includes difficulty modes, 
+                    multimodal support, chat memory, and downloadable Q&A.
+                </p>
+                <div class="mb-4">
+                    <h4 class="font-semibold mb-2">Technologies:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">CrewAI</span>
+                        <span class="tech-tag">AutoGen</span>
+                        <span class="tech-tag">Milvus</span>
+                        <span class="tech-tag">FAISS</span>
+                        <span class="tech-tag">pgvector</span>
+                        <span class="tech-tag">Pinecone</span>
+                        <span class="tech-tag">Weaviate</span>
+                        <span class="tech-tag">Qdrant</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: AI-to-Human Rewriter -->
+            <div class="project-card bg-white p-6 fade-in" style="animation-delay: 0.3s;">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold">AI-to-Human Text Rewriter</h3>
+                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">In Progress</span>
+                </div>
+                <p class="text-gray-700 mb-4">
+                    A fine-tuned T5/BART model trained on 1000+ human-written PDFs to convert robotic AI-generated text 
+                    into fluent, natural writing. Helps researchers, students, and content creators bypass AI detection.
+                </p>
+                <div class="mb-4">
+                    <h4 class="font-semibold mb-2">Technologies:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Hugging Face</span>
+                        <span class="tech-tag">T5/BART</span>
+                        <span class="tech-tag">Transformers</span>
+                        <span class="tech-tag">Streamlit</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Brain Tumor Classification -->
+            <div class="project-card bg-white p-6 fade-in" style="animation-delay: 0.4s;">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold">Brain Tumor Classification with Channel Attention</h3>
+                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Completed</span>
+                </div>
+                <p class="text-gray-700 mb-4">
+                    Created a hybrid model integrating Channel Attention with EfficientNetB0 to classify brain tumors 
+                    from MRI scans, achieving 99.54% validation accuracy.
+                </p>
+                <div class="mb-4">
+                    <h4 class="font-semibold mb-2">Technologies:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Keras</span>
+                        <span class="tech-tag">Attention Mechanisms</span>
+                        <span class="tech-tag">Medical Datasets</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Adaptive Fault Detection -->
+            <div class="project-card bg-white p-6 fade-in" style="animation-delay: 0.5s;">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold">Adaptive Fault Detection in Power Systems</h3>
+                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Completed</span>
+                </div>
+                <p class="text-gray-700 mb-4">
+                    Proposed and evaluated an Adaptive Fault Reduction Algorithm (AFRA) using Random Forest and ANN. 
+                    Reduced electrical system faults by 99.89%, improving system reliability.
+                </p>
+                <div class="mb-4">
+                    <h4 class="font-semibold mb-2">Technologies:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Random Forest</span>
+                        <span class="tech-tag">ANN</span>
+                        <span class="tech-tag">Optimization</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Publications Section -->
+<section id="publications" class="py-16">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12 text-center fade-in">Publications</h2>
+        
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Publication 1 -->
+            <div class="publication-item bg-white p-6 rounded-lg shadow-sm mb-8 fade-in" style="animation-delay: 0.2s;">
+                <h3 class="text-xl font-bold mb-2">Channel Attention Mechanism in Hybrid Deep Learning for Accurate Brain Tumor Classification</h3>
+                <p class="text-gray-700 mb-4">
+                    A novel hybrid approach combining channel attention with EfficientNetB0 to enhance MRI-based brain tumor classification.
+                </p>
+                <div class="flex justify-end">
+                    <a href="#" class="primary-text hover:text-accent-color transition-colors duration-300" title="Link to be added">
+                        View publication <i class="fas fa-external-link-alt ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Publication 2 -->
+            <div class="publication-item bg-white p-6 rounded-lg shadow-sm mb-8 fade-in" style="animation-delay: 0.3s;">
+                <h3 class="text-xl font-bold mb-2">Prediction of the Intensity of Physical Movement of Aged People Using Gas Sensors</h3>
+                <p class="text-gray-700 mb-4">
+                    Explored gas sensor data to predict physical movement intensity in elderly populations, enabling better healthcare monitoring.
+                </p>
+                <div class="flex justify-end">
+                    <a href="https://ieeexplore.ieee.org/document/10534390/" class="primary-text hover:text-accent-color transition-colors duration-300">
+                        View publication <i class="fas fa-external-link-alt ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Publication 3 -->
+            <div class="publication-item bg-white p-6 rounded-lg shadow-sm mb-8 fade-in" style="animation-delay: 0.4s;">
+                <h3 class="text-xl font-bold mb-2">Impacts of Passenger Request Trends on Ride-Sharing System Performance</h3>
+                <p class="text-gray-700 mb-4">
+                    Analyzed how passenger request patterns affect ride-sharing efficiency, offering optimization insights.
+                </p>
+                <div class="flex justify-end">
+                    <a href="https://www.researchgate.net/publication/376172154_Impacts_of_passenger_request_trends_on_ride-sharing_system_performance" 
+                       class="primary-text hover:text-accent-color transition-colors duration-300">
+                        View publication <i class="fas fa-external-link-alt ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Publication 4 -->
+            <div class="publication-item bg-white p-6 rounded-lg shadow-sm fade-in" style="animation-delay: 0.5s;">
+                <h3 class="text-xl font-bold mb-2">Early Detection of System Failure Using ML Techniques</h3>
+                <p class="text-gray-700 mb-4">
+                    Demonstrated the effectiveness of ML approaches for predicting and preventing failures in critical infrastructure.
+                </p>
+                <div class="flex justify-end">
+                    <a href="https://ieeexplore.ieee.org/document/10839714" 
+                       class="primary-text hover:text-accent-color transition-colors duration-300">
+                        View publication <i class="fas fa-external-link-alt ml-1"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12 text-center fade-in">Skills & Tools</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- AI & ML Skills -->
+            <div class="skill-category bg-white p-6 rounded-lg shadow-sm fade-in" style="animation-delay: 0.2s;">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-brain text-accent-color mr-3"></i> AI & ML
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between mb-1"><span>PyTorch</span><span>95%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 95%"></div></div>
+                    
+                    <div class="flex justify-between mb-1"><span>TensorFlow</span><span>90%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 90%"></div></div>
+                    
+                    <div class="flex justify-between mb-1"><span>Scikit-learn</span><span>88%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 88%"></div></div>
+                    
+                    <div class="flex justify-between mb-1"><span>OpenCV</span><span>85%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 85%"></div></div>
+                    
+                    <div class="flex justify-between mb-1"><span>EfficientNet</span><span>92%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 92%"></div></div>
+                </div>
+            </div>
+
+            <!-- NLP / LLM Skills -->
+            <div class="skill-category bg-white p-6 rounded-lg shadow-sm fade-in" style="animation-delay: 0.3s;">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-comment-dots text-accent-color mr-3"></i> NLP / LLM
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between mb-1"><span>Hugging Face</span><span>90%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 90%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>Transformers (T5/BART/GPT)</span><span>88%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 88%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>LangChain</span><span>85%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 85%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>LangGraph</span><span>82%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 82%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>CrewAI</span><span>80%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 80%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>AutoGen</span><span>78%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 78%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>Agentic AI</span><span>85%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 85%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>Multimodal RAG</span><span>80%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 80%"></div></div>
+                </div>
+            </div>
+
+            <!-- Dev Tools Skills -->
+            <div class="skill-category bg-white p-6 rounded-lg shadow-sm fade-in" style="animation-delay: 0.4s;">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-tools text-accent-color mr-3"></i> Dev Tools
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between mb-1"><span>FastAPI</span><span>85%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 85%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>Streamlit</span><span>90%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 90%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>Docker</span><span>80%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 80%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>GitHub</span><span>95%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 95%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>Jupyter</span><span>95%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 95%"></div></div>
+                </div>
+            </div>
+
+            <!-- Vector Databases -->
+            <div class="skill-category bg-white p-6 rounded-lg shadow-sm fade-in" style="animation-delay: 0.5s;">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-database text-accent-color mr-3"></i> Vector Databases
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between mb-1"><span>Milvus</span><span>85%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 85%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>FAISS</span><span>88%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 88%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>pgvector</span><span>80%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 80%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>Pinecone</span><span>85%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 85%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>Weaviate</span><span>78%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 78%"></div></div>
+
+                    <div class="flex justify-between mb-1"><span>Qdrant</span><span>82%</span></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 82%"></div></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center fade-in">Let's Collaborate</h2>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden fade-in" style="animation-delay: 0.2s;">
+                <div class="md:flex contact-section-container">
+                    <div class="contact-info-side p-8 bg-gradient-to-br from-primary-color to-indigo-700 text-white md:w-1/2">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <p class="mb-8">
+                            I'm open to research internships, industry projects, academic partnerships, and feedback 
+                            on my AI tools. Feel free to reach out.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-accent-color mr-4 text-xl"></i>
+                                <span>sayem1.ahamed@gmail.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-linkedin text-accent-color mr-4 text-xl"></i>
+                                <a href="https://www.linkedin.com/in/md-sayem-ahamed-3bab77337/" class="hover:text-accent-color transition-colors duration-300">LinkedIn</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-github text-accent-color mr-4 text-xl"></i>
+                                <a href="https://github.com/Sayem7456" class="hover:text-accent-color transition-colors duration-300">GitHub</a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h4 class="text-lg font-semibold mb-4">Research Collaboration Areas</h4>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Medical Image Analysis</li>
+                                <li>LLM Applications in Healthcare</li>
+                                <li>AI for Scientific Research</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 p-8 contact-form-side">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800">Send a Message</h3>
+                        <form class="space-y-4" action="https://formspree.io/f/xgvklzjq" method="POST">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                                <input type="text" id="subject" name="subject" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-transparent"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="primary-btn w-full">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-2xl font-bold">Sayem<span class="text-accent-color">.dev</span></div>
+                    <p class="text-gray-400 mt-2">AI Researcher</p>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="https://www.linkedin.com/in/md-sayem-ahamed-3bab77337/" target="_blank" rel="noopener noreferrer" class="h-10 w-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-accent-color transition-colors duration-300" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Sayem7456" target="_blank" rel="noopener noreferrer" class="h-10 w-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-accent-color transition-colors duration-300" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="h-10 w-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-accent-color transition-colors duration-300" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="mailto:sayem1.ahamed@gmail.com" class="h-10 w-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-accent-color transition-colors duration-300" title="Email">
+                        <i class="far fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <hr class="my-6 border-gray-700">
+            
+            <div class="text-center text-gray-400">
+                <p>&copy; 2025 Sayem Ahamed. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div id="chat-bubble" class="fixed bottom-8 right-8 w-16 h-16 rounded-full flex items-center justify-center cursor-pointer shadow-lg z-50 transform hover:scale-110 transition-transform">
+        <i class="fas fa-comments text-white text-2xl"></i>
+    </div>
+
+    <div id="chat-popup" class="hidden fixed bottom-28 right-8 w-full max-w-sm bg-white rounded-lg shadow-xl z-50 flex flex-col" style="height: 60vh;">
+        <div class="p-4 bg-white border-b border-gray-200 rounded-t-lg flex justify-between items-center">
+            <h3 class="font-bold text-lg primary-text">Chat with my AI Assistant</h3>
+            <button id="close-chat" class="text-2xl font-bold leading-none text-gray-500 hover:text-gray-800 focus:outline-none">&times;</button>
+        </div>
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto">
+            <!-- Initial bot message -->
+            <div class="flex items-end mb-4">
+                <div class="flex-shrink-0 h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center mr-3">
+                    <i class="fas fa-robot text-gray-600"></i>
+                </div>
+                <div class="bg-gray-200 text-gray-800 p-3 rounded-lg rounded-bl-none max-w-xs lg:max-w-md">
+                    <p>Hello! I'm Sayem's AI assistant. Feel free to ask me anything about his skills, projects, or experience.</p>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t border-gray-200">
+            <form id="chat-form" class="flex gap-2">
+                <input type="text" id="chat-input" placeholder="Type your message..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-color" autocomplete="off">
+                <button type="submit" class="primary-btn flex-shrink-0">Send</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- External JS -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
