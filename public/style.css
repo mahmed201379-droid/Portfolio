@@ -98,12 +98,18 @@ code {
 .skill-tag {
     background-color: rgba(15, 98, 254, 0.1);
     color: var(--primary-color);
-    padding: 5px 12px;
+    padding: 6px 14px; /* Slightly adjusted padding for better visual balance */
     border-radius: 20px;
-    display: inline-block;
-    margin: 5px;
+    display: block; /* Make each tag take its own line */
+    width: fit-content; /* Ensure the tag only takes up as much width as its content */
+    margin: 0 auto 8px; /* Center the tag and add vertical spacing */
     font-size: 0.9rem;
     transition: all 0.3s ease;
+}
+
+/* Remove bottom margin from the last skill tag in a category */
+.skill-category > div > .skill-tag:last-child {
+    margin-bottom: 0;
 }
 
 .skill-tag:hover {
@@ -112,8 +118,15 @@ code {
 }
 
 .skill-category {
-    border-left: 3px solid var(--accent-color);
-    padding-left: 15px;
+    border-top: 3px solid var(--accent-color);
+}
+
+/* Override for skill tags in the About section for an inline, wrapped layout */
+#about .skill-tag {
+    display: inline-flex; /* Use inline-flex to correctly align icon and text */
+    align-items: center;
+    width: auto; /* Reset width to fit content */
+    margin: 0; /* Let the flex container's 'gap' handle all spacing */
 }
 
 /* ================================
@@ -172,24 +185,6 @@ code {
 .is-visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* ================================
-   Progress Bars
-================================ */
-.progress-container {
-    width: 100%;
-    height: 8px;
-    background-color: #e0e0e0;
-    border-radius: 4px;
-    margin: 5px 0;
-}
-
-.progress-bar {
-    height: 100%;
-    background-color: var(--primary-color);
-    border-radius: 4px;
-    transition: width 1s ease-in-out;
 }
 
 /* ================================

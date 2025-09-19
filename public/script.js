@@ -75,43 +75,12 @@ fadeInOnScroll();
 // Check on scroll
 window.addEventListener('scroll', fadeInOnScroll);
 
-/* ================================
-   Progress Bar Animation
-================================ */
-const animateProgressBars = () => {
-    const progressBars = document.querySelectorAll('.progress-bar');
-
-    progressBars.forEach(bar => {
-        const value = bar.style.width;
-        bar.style.width = '0';
-
-        setTimeout(() => {
-            bar.style.width = value;
-        }, 100);
-    });
-};
-
-// Trigger progress bar animation when skills section is visible
+// Handle initial hero fade-in
 document.addEventListener('DOMContentLoaded', () => {
     // Show hero fade-in immediately
     document.querySelectorAll('.hero-content .fade-in').forEach(el => {
         el.classList.add('is-visible');
     });
-
-    const skillsSection = document.getElementById('skills');
-
-    if (skillsSection) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateProgressBars();
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-
-        observer.observe(skillsSection);
-    }
 });
 
 /* ================================
@@ -216,7 +185,7 @@ const handleChatSubmit = async (e) => {
     } catch (error) {
         console.error('Error with chat API:', error);
         document.getElementById('typing-indicator')?.remove();
-        addMessage('bot', 'Sorry, I seem to be having trouble connecting. Please make sure my backend server is running.');
+        addMessage('bot', 'Sorry, I seem to be having trouble connecting. Please try again later.');
     }
 };
 
