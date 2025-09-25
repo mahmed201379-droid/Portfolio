@@ -5,7 +5,7 @@ Publications: Four conference papers published; currently preparing a Q1 journal
 Capstone Project: Advanced Deep Learning Techniques for Classifying and Assessing the Severity of Lung Diseases using X-ray Images.
 Other Work: Adaptive Fault Reduction Algorithm (AFRA) paper achieving 99.89% fault reduction using ML for electrical systems.
 Career & Professional Status: 
-Current Role: AI Engineer at Ethics Advance Technology Ltd (Dhaka/Gazipur, Bangladesh).
+Current Role: AI Engineer at Ethics Advance Technology Ltd (Dhaka, Bangladesh).
 Responsibilities: Applying AI/ML techniques to real-world industry problems, bridging research with deployable systems.
 Career Direction: Combining applied AI engineering with academic research to build strong expertise in both domains.
 Future Goals
@@ -28,4 +28,5 @@ Dual-track mindset: Pursuing both cutting-edge academic research and real-world 
 Adaptability: Transitioning research focus from medical imaging to LLM/RAG-based AI systems.
 Entrepreneurial Drive: Clear roadmap to move from AI research → industry expertise → startup founder.
 Vision: To become a globally recognized AI researcher and entrepreneur, creating tools that bridge academia, industry, and society.
+
 
