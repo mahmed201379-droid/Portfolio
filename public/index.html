@@ -67,77 +67,81 @@
 
 <body>
     <!-- Navigation -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="sticky top-0 z-50">
         <nav class="container mx-auto py-4 px-6 flex justify-between items-center">
-            <div class="font-bold text-2xl primary-text">Sayem<span class="accent-text">.dev</span></div>
-            <div class="hidden md:flex space-x-6">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#publications" class="nav-link">Publications</a>
-                <a href="#contact" class="nav-link">Contact</a>
+            <div class="font-bold text-2xl primary-text" style="letter-spacing: 1px;">
+                <i class="fas fa-code" style="margin-right: 8px;"></i>Sayem<span class="accent-text">.dev</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link">ABOUT</a>
+                <a href="#projects" class="nav-link">PROJECTS</a>
+                <a href="#publications" class="nav-link">RESEARCH</a>
+                <a href="#contact" class="nav-link">CONTACT</a>
             </div>
             <div class="md:hidden">
-                <button id="menuToggle" class="focus:outline-none">
+                <button id="menuToggle" class="focus:outline-none text-neon-cyan">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </nav>
-        <div id="mobileMenu" class="hidden md:hidden bg-white w-full py-4 px-6 shadow-md">
+        <div id="mobileMenu" class="hidden md:hidden w-full py-4 px-6" style="background-color: rgba(10, 14, 39, 0.95); border-bottom: 1px solid rgba(0, 217, 255, 0.2);">
             <div class="flex flex-col space-y-4">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#publications" class="nav-link">Publications</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#about" class="nav-link">ABOUT</a>
+                <a href="#projects" class="nav-link">PROJECTS</a>
+                <a href="#publications" class="nav-link">RESEARCH</a>
+                <a href="#contact" class="nav-link">CONTACT</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="py-16 md:py-24 bg-white">
+    <section class="py-24 md:py-32 relative overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="hero-content flex flex-col md:flex-row items-center justify-between">
                 <div class="md:w-3/5 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4 fade-in">
-                        Hi, I'm <span class="primary-text">Sayem Ahamed</span>
+                    <div class="mb-4 fade-in" style="animation-delay: 0s;">
+                        <span class="inline-block px-4 py-2 border-0 text-neon-cyan" style="font-size: 0.85rem; letter-spacing: 1px; font-family: 'Fira Code', monospace; border-bottom: 2px solid rgba(0, 217, 255, 0.4);">
+                            <i class="fas fa-terminal mr-2"></i>&gt; WELCOME TO MY LAB _
+                        </span>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 fade-in" style="animation-delay: 0.1s; line-height: 1.2;" data-glitch="I Build Intelligent AI Systems">
+                        I Build <span class="accent-text">Intelligent AI</span> Systems
                     </h1>
-                    <h2 class="text-xl md:text-2xl text-gray-600 mb-8 fade-in" style="animation-delay: 0.2s;">
+                    <h2 class="text-xl md:text-2xl mb-8 fade-in" style="animation-delay: 0.2s; color: var(--text-secondary);">
                         <span class="inline-block">AI Engineer</span> 
-                        <span class="inline-block mx-2">|</span> 
+                        <span class="inline-block mx-2 neon-cyan">×</span> 
                         <span class="inline-block">AI Researcher</span> 
-                        <span class="inline-block mx-2">|</span> 
+                        <span class="inline-block mx-2 neon-cyan">×</span> 
                         <span class="inline-block">Agentic AI Developer</span>
                     </h2>
-                    <p class="text-lg text-gray-700 mb-8 fade-in" style="animation-delay: 0.4s;">
-                        I design and develop intelligent AI systems with a strong focus on Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), and Agentic AI. 
-                        I am currently working as an <strong>AI Engineer at EATL Innovation Hub Ltd </strong>, where I build production-grade applications leveraging RAG pipelines, 
-                        agentic AI frameworks, and multimodal architectures that integrate text, image, and structured data.
+                    <p class="text-lg mb-8 fade-in" style="animation-delay: 0.3s; color: var(--text-secondary); line-height: 1.8;">
+                        Specializing in <span style="color: var(--neon-cyan);">Large Language Models</span>, <span style="color: var(--neon-cyan);">RAG Pipelines</span>, and <span style="color: var(--neon-cyan);">Agentic AI</span>. Currently building production-grade AI systems at <span style="color: var(--neon-purple);">EATL Innovation Hub Ltd</span>.
                     </p>
-                    <div class="hero-buttons flex flex-wrap gap-4 fade-in" style="animation-delay: 0.6s;">
+                    <div class="hero-buttons flex flex-wrap gap-4 fade-in" style="animation-delay: 0.4s;">
                         <a href="https://drive.usercontent.google.com/u/0/uc?id=1yUdw5T41oG6X5PF1MgDh9ffD-e6t1oU-&export=download" class="primary-btn flex items-center">
                             <i class="fas fa-download mr-2"></i> Download CV
                         </a>
                         <a href="#projects" class="secondary-btn flex items-center">
-                            <i class="fas fa-laptop-code mr-2"></i> Explore Projects
-                        </a>
-                        <a href="#contact" class="secondary-btn flex items-center">
-                            <i class="fas fa-envelope mr-2"></i> Contact Me
+                            <i class="fas fa-arrow-right mr-2"></i> Explore Projects
                         </a>
                     </div>
                 </div>
-                <div class="md:w-2/5 flex justify-center fade-in" style="animation-delay: 0.8s;">
+                <div class="md:w-2/5 flex justify-center fade-in" style="animation-delay: 0.5s;">
                     <div class="relative">
-                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 absolute opacity-20 transform -translate-x-4 translate-y-4"></div>
+                        <!-- Glowing background circle -->
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full absolute opacity-30 transform -translate-x-4 translate-y-4" style="background: radial-gradient(circle, rgba(0, 217, 255, 0.4) 0%, rgba(163, 102, 255, 0.2) 100%); filter: blur(40px);"></div>
+                        
+                        <!-- Border glow effect -->
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full absolute" style="border: 2px solid rgba(0, 217, 255, 0.3); box-shadow: 0 0 40px rgba(0, 217, 255, 0.2), inset 0 0 40px rgba(0, 217, 255, 0.1);"></div>
 
-                        <div class="w-64 h-64 md:w-80 md:h-80 bg-white rounded-full overflow-hidden relative z-10">
+                        <!-- Profile image container -->
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden relative z-10" style="background-color: var(--surface); border: 2px solid rgba(0, 217, 255, 0.5);">
                           <img
                             src="sayem3.png"
                             alt="Sayem Ahamed - AI Engineer and AI Researcher specializing in LLMs, RAG, and Agentic AI" loading="lazy"
                             class="w-full h-full object-cover object-top relative -translate-x-[10px]"
                           >
-                        </div>                        
-                                                                                                                                                             
+                        </div>
                     </div>
                 </div>
             </div>
@@ -145,22 +149,20 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center fade-in">About Me</h2>
-            <div class="max-w-3xl mx-auto">
-                <div class="bg-white p-8 rounded-lg shadow-md fade-in" style="animation-delay: 0.2s;">
+<section id="about" class="py-20">
+    <div class="container mx-auto px-6">
+        <div style="text-align: center; margin-bottom: 3rem; font-family: 'Fira Code', monospace;">
+            <span style="color: var(--neon-green); font-weight: bold;">$</span>
+            <h2 class="text-4xl font-bold fade-in" style="display: inline;">ABOUT ME</h2>
+            <span style="color: var(--neon-cyan); font-weight: bold; margin-left: 8px; animation: blink 1s infinite;">_</span>
+        </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white p-12 rounded-lg fade-in" style="animation-delay: 0.2s;">
                     <p class="mb-6 text-lg">
-                    I am a Computer Science graduate from Bangladesh with experience spanning both academic research and applied AI development. 
-                    My academic work explored deep learning and medical image analysis, focusing on attention mechanisms, hybrid architectures, and diagnostic systems for medical imaging. 
-                    I have published research on brain tumor classification, early system fault detection, and intelligent healthcare applications, as well as applied studies in predicting 
-                    physical movement intensity from sensor data and analyzing ride-sharing request patterns to optimize allocation strategies.
+                        I am a <span class="neon-cyan">Computer Science graduate</span> from Bangladesh with experience spanning both academic research and applied AI development. My academic work explored deep learning and medical image analysis, focusing on <span class="neon-cyan">attention mechanisms</span>, <span class="neon-cyan">hybrid architectures</span>, and diagnostic systems for medical imaging. I have published research on brain tumor classification, early system fault detection, and intelligent healthcare applications.
                     </p>
                     <p class="text-lg">
-                    Currently, I work as an AI Engineer at EATL Innovation Hub Ltd, specializing in Large Language Models (LLMs), 
-                    ,advanced Retrieval-Augmented Generation (RAG), and agentic AI systems. 
-                    My projects include developing a AI-powered medical learning system and building intelligent agents that integrate reasoning, 
-                    planning, and retrieval for practical deployment across real-world domains.
+                        Currently, I work as an <span class="accent-text">AI Engineer</span> at <span class="accent-text">EATL Innovation Hub Ltd</span>, specializing in <span class="neon-cyan">Large Language Models (LLMs)</span>, <span class="neon-cyan">Retrieval-Augmented Generation (RAG)</span>, and <span class="neon-cyan">agentic AI systems</span>. My projects include developing AI-powered medical learning systems and building intelligent agents that integrate reasoning, planning, and retrieval for practical deployment across real-world domains.
                     </p>
 
                     <div class="mt-8">
@@ -188,101 +190,105 @@
     <!-- (Updated content will be added in respective sections later) -->
 
     <!-- Projects Section -->
-<section id="projects" class="py-16">
+<section id="projects" class="py-20">
     <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-12 text-center fade-in">Featured Projects</h2>
+        <div style="text-align: center; margin-bottom: 3rem; font-family: 'Fira Code', monospace;">
+            <span style="color: var(--neon-pink); font-weight: bold;">root@</span>
+            <h2 class="text-4xl font-bold fade-in" style="display: inline;">FEATURED PROJECTS</h2>
+            <span style="color: var(--neon-cyan); font-weight: bold; margin-left: 8px; animation: blink 1s infinite;">_</span>
+        </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
             <!-- Project 1: RAG Academic Assistant -->
-            <div class="project-card bg-white p-6 fade-in" style="animation-delay: 0.2s;">
+            <div class="project-card fade-in" style="animation-delay: 0.2s;">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold">RAG-Based Academic Assistant</h3>
-                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Completed</span>
+                    <span class="px-3 py-1 rounded text-xs font-semibold" style="background-color: rgba(57, 255, 20, 0.2); color: var(--neon-green); border: 1px solid var(--neon-green);">COMPLETED</span>
                 </div>
-                <p class="text-gray-700 mb-4">
+                <p class="mb-4" style="color: var(--text-secondary);">
                     Developed a Retrieval-Augmented Generation (RAG) application that allows students to interact with 
                     academic textbooks and generate accurate, context-aware answers. Includes difficulty modes, 
                     multimodal support, chat memory, and downloadable Q&A.
                 </p>
                 <div class="mb-4">
-                    <h4 class="font-semibold mb-2">Technologies:</h4>
+                    <h4 class="font-semibold mb-3" style="color: var(--neon-cyan); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Technologies:</h4>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">LangChain</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Pgvector</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Hugging Face</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Streamlit</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">LangChain</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Pgvector</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Hugging Face</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Streamlit</span>
                     </div>
                 </div>
             </div>
 
             <!-- Project 3: Brain Tumor Classification -->
-            <div class="project-card bg-white p-6 fade-in" style="animation-delay: 0.4s;">
+            <div class="project-card fade-in" style="animation-delay: 0.4s;">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold">Brain Tumor Classification with Channel Attention</h3>
-                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Completed</span>
+                    <span class="px-3 py-1 rounded text-xs font-semibold" style="background-color: rgba(57, 255, 20, 0.2); color: var(--neon-green); border: 1px solid var(--neon-green);">COMPLETED</span>
                 </div>
-                <p class="text-gray-700 mb-4">
+                <p class="mb-4" style="color: var(--text-secondary);">
                     Created a hybrid model integrating Channel Attention with EfficientNetB0 to classify brain tumors 
                     from MRI scans, achieving 99.54% validation accuracy.
                 </p>
                 <div class="mb-4">
-                    <h4 class="font-semibold mb-2">Technologies:</h4>
+                    <h4 class="font-semibold mb-3" style="color: var(--neon-cyan); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Technologies:</h4>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">TensorFlow</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Keras</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Attention Mechanisms</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">EfficientNetB0</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Medical Datasets</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Streamlit</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">TensorFlow</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Keras</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Attention Mechanisms</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">EfficientNetB0</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Medical Datasets</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Streamlit</span>
                     </div>
                 </div>
             </div>
 
             <!-- Project 4: Resume Improvement Suggestions -->
-            <div class="project-card bg-white p-6 fade-in" style="animation-delay: 0.6s;">
+            <div class="project-card fade-in" style="animation-delay: 0.6s;">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold">Resume Improvement Suggestions based on Job Description</h3>
-                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Ongoing</span>
+                    <span class="px-3 py-1 rounded text-xs font-semibold" style="background-color: rgba(255, 165, 0, 0.2); color: #ffa500; border: 1px solid #ffa500;">ONGOING</span>
                 </div>
-                <p class="text-gray-700 mb-4">
+                <p class="mb-4" style="color: var(--text-secondary);">
                     Developing a Generative AI system that provides personalized resume improvement suggestions aligned with a target job description. 
                     The system extracts key skills and keywords from job postings and evaluates the candidate’s resume, recommending actionable improvements to maximize compatibility with applicant tracking systems (ATS) and recruiter preferences.
                 </p>
                 <div class="mb-4">
-                    <h4 class="font-semibold mb-2">Technologies:</h4>
+                    <h4 class="font-semibold mb-3" style="color: var(--neon-cyan); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Technologies:</h4>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Python</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Hugging Face Transformers</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">LangChain</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">RAG (Retrieval-Augmented Generation)</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">OpenAI API</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Prompt Engineering</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Text Similarity & Embeddings</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Python</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Hugging Face</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">LangChain</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">RAG</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">OpenAI API</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Prompt Engineering</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Embeddings</span>
                     </div>
                 </div>
             </div>
 
             <!-- Project 4: Agentic AI PC Builder -->
-            <div class="project-card bg-white p-6 fade-in" style="animation-delay: 0.7s;">
+            <div class="project-card fade-in" style="animation-delay: 0.7s;">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold">Agentic AI PC Builder based on Use Case</h3>
-                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Ongoing</span>
+                    <span class="px-3 py-1 rounded text-xs font-semibold" style="background-color: rgba(255, 165, 0, 0.2); color: #ffa500; border: 1px solid #ffa500;">ONGOING</span>
                 </div>
-                <p class="text-gray-700 mb-4">
+                <p class="mb-4" style="color: var(--text-secondary);">
                     Developing an Agentic AI system that generates optimal PC configurations based on user-specified use cases and budgets. 
                     Five use cases are supported: Gaming, Video Editing, Software Development, AI Research, and CAD. 
                     The system autonomously recommends the best components with purchase links adjusted to the user's region while staying within the expected budget.
                 </p>
                 <div class="mb-4">
-                    <h4 class="font-semibold mb-2">Technologies:</h4>
+                    <h4 class="font-semibold mb-3" style="color: var(--neon-cyan); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Technologies:</h4>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Python</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Agentic AI</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Decision-Making & Optimization</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">FastAPI</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Web Scraping & APIs</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Streamlit</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Python</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Agentic AI</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Decision-Making</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">FastAPI</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Web Scraping</span>
+                        <span class="text-xs font-medium px-3 py-1.5 rounded" style="background-color: rgba(0, 217, 255, 0.1); color: var(--neon-cyan); border: 1px solid rgba(0, 217, 255, 0.3);">Streamlit</span>
                     </div>
                 </div>
             </div>
@@ -295,16 +301,20 @@
 </section>
 
 <!-- Publications Section -->
-<section id="publications" class="py-16">
+<section id="publications" class="py-20">
     <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-12 text-center fade-in">Publications</h2>
+        <div style="text-align: center; margin-bottom: 3rem; font-family: 'Fira Code', monospace;">
+            <span style="color: var(--neon-purple); font-weight: bold;">@</span>
+            <h2 class="text-4xl font-bold fade-in" style="display: inline;">RESEARCH PUBLICATIONS</h2>
+            <span style="color: var(--neon-cyan); font-weight: bold; margin-left: 8px; animation: blink 1s infinite;">_</span>
+        </div>
         
         <div class="max-w-4xl mx-auto">
             
             <!-- Publication 1 -->
-            <div class="publication-item bg-white p-6 rounded-lg shadow-sm mb-8 fade-in" style="animation-delay: 0.2s;">
+            <div class="publication-item p-8 rounded-lg mb-8 fade-in" style="animation-delay: 0.2s;">
                 <h3 class="text-xl font-bold mb-2">Channel Attention Mechanism in Hybrid Deep Learning for Accurate Brain Tumor Classification</h3>
-                <p class="text-gray-700 mb-4">
+                <p class="mb-4" style="color: var(--text-secondary);">
                     A novel hybrid approach combining channel attention with EfficientNetB0 to enhance MRI-based brain tumor classification.
                 </p>
                 <div class="flex justify-end">
@@ -360,16 +370,22 @@
 </section>
 
 <!-- Skills Section -->
-<section id="skills" class="py-16 bg-gray-50">
+<section id="skills" class="py-20">
     <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-12 text-center fade-in">Skills & Tools</h2>
+        <div style="text-align: center; margin-bottom: 3rem; font-family: 'Fira Code', monospace;">
+            <span style="color: var(--neon-cyan); font-weight: bold;">{'</span>
+            <h2 class="text-4xl font-bold fade-in" style="display: inline;">TECHNICAL ARSENAL</h2>
+            <span style="color: var(--neon-cyan); font-weight: bold; margin-left: 8px;">'};</span>
+        </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
             <!-- AI & ML Skills -->
-            <div class="skill-category bg-white p-6 rounded-lg shadow-sm fade-in" style="animation-delay: 0.2s;">
-                <h3 class="text-xl font-bold mb-4 flex items-center justify-center">
-                    <i class="fas fa-brain text-accent-color mr-3"></i> AI & ML
+            <div class="skill-category p-8 fade-in" style="animation-delay: 0.2s; background-color: var(--surface); border: 2px solid rgba(0, 217, 255, 0.4); border-radius: 0px; position: relative;">
+                <div style="position: absolute; top: 8px; left: 8px; color: var(--neon-green); font-weight: bold; font-size: 1.2rem;">[</div>
+                <div style="position: absolute; top: 8px; right: 8px; color: var(--neon-green); font-weight: bold; font-size: 1.2rem;">]</div>
+                <h3 class="text-xl font-bold mb-4 flex items-center justify-center" style="color: var(--neon-cyan); text-transform: uppercase; letter-spacing: 1px; font-family: 'Fira Code', monospace;">
+                    <i class="fas fa-brain mr-3"></i> AI & ML
                 </h3>
                 <div>
                     <span class="skill-tag">PyTorch</span>
@@ -385,9 +401,11 @@
             </div>
 
             <!-- NLP / LLM Skills -->
-            <div class="skill-category bg-white p-6 rounded-lg shadow-sm fade-in" style="animation-delay: 0.3s;">
-                <h3 class="text-xl font-bold mb-4 flex items-center justify-center">
-                    <i class="fas fa-comment-dots text-accent-color mr-3"></i> NLP / LLM
+            <div class="skill-category p-8 fade-in" style="animation-delay: 0.3s; background-color: var(--surface); border: 2px solid rgba(163, 102, 255, 0.4); border-radius: 0px; position: relative;">
+                <div style="position: absolute; top: 8px; left: 8px; color: var(--neon-purple); font-weight: bold; font-size: 1.2rem;">&lt;</div>
+                <div style="position: absolute; top: 8px; right: 8px; color: var(--neon-purple); font-weight: bold; font-size: 1.2rem;">&gt;</div>
+                <h3 class="text-xl font-bold mb-4 flex items-center justify-center" style="color: var(--neon-purple); text-transform: uppercase; letter-spacing: 1px; font-family: 'Fira Code', monospace;">
+                    <i class="fas fa-comment-dots mr-3"></i> NLP / LLM
                 </h3>
                 <div>
                     <span class="skill-tag">LangChain</span>
@@ -402,9 +420,11 @@
             </div>
 
             <!-- Dev Tools Skills -->
-            <div class="skill-category bg-white p-6 rounded-lg shadow-sm fade-in" style="animation-delay: 0.4s;">
-                <h3 class="text-xl font-bold mb-4 flex items-center justify-center">
-                    <i class="fas fa-tools text-accent-color mr-3"></i> Dev Tools
+            <div class="skill-category p-8 fade-in" style="animation-delay: 0.4s; background-color: var(--surface); border: 2px solid rgba(0, 217, 255, 0.4); border-radius: 0px; position: relative;">
+                <div style="position: absolute; top: 8px; left: 8px; color: var(--neon-cyan); font-weight: bold; font-size: 1.2rem;">{'</div>
+                <div style="position: absolute; top: 8px; right: 8px; color: var(--neon-cyan); font-weight: bold; font-size: 1.2rem;">'}</div>
+                <h3 class="text-xl font-bold mb-4 flex items-center justify-center" style="color: var(--neon-cyan); text-transform: uppercase; letter-spacing: 1px; font-family: 'Fira Code', monospace;">
+                    <i class="fas fa-tools mr-3"></i> Dev Tools
                 </h3>
                 <div>
                     <span class="skill-tag">FastAPI</span>
@@ -418,9 +438,11 @@
             </div>
 
             <!-- Vector Databases -->
-            <div class="skill-category bg-white p-6 rounded-lg shadow-sm fade-in" style="animation-delay: 0.5s;">
-                <h3 class="text-xl font-bold mb-4 flex items-center justify-center">
-                    <i class="fas fa-database text-accent-color mr-3"></i> Vector Databases
+            <div class="skill-category p-8 fade-in" style="animation-delay: 0.5s; background-color: var(--surface); border: 2px solid rgba(255, 0, 110, 0.4); border-radius: 0px; position: relative;">
+                <div style="position: absolute; top: 8px; left: 8px; color: var(--neon-pink); font-weight: bold; font-size: 1.2rem;">/*</div>
+                <div style="position: absolute; top: 8px; right: 8px; color: var(--neon-pink); font-weight: bold; font-size: 1.2rem;">*/</div>
+                <h3 class="text-xl font-bold mb-4 flex items-center justify-center" style="color: var(--neon-pink); text-transform: uppercase; letter-spacing: 1px; font-family: 'Fira Code', monospace;">
+                    <i class="fas fa-database mr-3"></i> Vector DB
                 </h3>
                 <div>
                     <span class="skill-tag">Milvus</span>
