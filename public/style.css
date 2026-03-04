@@ -688,10 +688,43 @@ html {
    Contact Section
 ================================ */
 .contact-info-side {
-    background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-purple) 100%);
-    color: var(--bg-dark);
+    background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(26, 31, 58, 0.95) 100%);
+    color: var(--text-color);
     display: block;
     font-weight: 600;
+    border: 2px solid rgba(0, 217, 255, 0.4);
+    box-shadow: 0 0 40px rgba(0, 217, 255, 0.2), inset 0 0 30px rgba(0, 217, 255, 0.05);
+}
+
+.contact-info-side h3,
+.contact-info-side h4 {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 15px rgba(0, 217, 255, 0.6);
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    background-clip: unset;
+}
+
+.contact-info-side p,
+.contact-info-side li {
+    color: var(--text-secondary);
+}
+
+.contact-info-side .fas,
+.contact-info-side .fab {
+    color: var(--neon-cyan) !important;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+.contact-info-side a {
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.contact-info-side a:hover {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.6);
 }
 
 footer {
