@@ -839,7 +839,13 @@ a:hover {
         0 0 40px rgba(0, 217, 255, 0.3),
         0 0 80px rgba(163, 102, 255, 0.2),
         inset 0 0 60px rgba(0, 217, 255, 0.05) !important;
-    position: relative;
+    position: fixed;
+    right: 2rem;
+    bottom: 7rem;
+    left: auto;
+    width: min(24rem, calc(100vw - 2rem));
+    max-width: 24rem;
+    z-index: 9998;
 }
 
 #chat-popup::before {
