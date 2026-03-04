@@ -790,6 +790,11 @@ a:hover {
     overflow: hidden;
 }
 
+#chat-bubble i {
+    position: relative;
+    z-index: 2;
+}
+
 #chat-bubble::before {
     content: '';
     position: absolute;
@@ -946,6 +951,11 @@ a:hover {
     border: 1px solid rgba(0, 217, 255, 0.4) !important;
     box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
     font-family: 'Fira Code', monospace;
+}
+
+.user-message-content p {
+    color: var(--neon-cyan) !important;
+    margin: 0;
 }
 
 /* Typing effect cursor */
