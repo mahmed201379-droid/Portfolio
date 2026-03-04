@@ -104,42 +104,81 @@ if (chatBubble && chatPopup && closeChat) {
     closeChat.addEventListener('click', toggleChat);
 }
 
-const addMessage = (sender, message) => {
-    let messageContainerHtml;
-
+const addMessage = (sender, message, useTypingEffect = false) => {
     if (sender === 'user') {
         // Escape user input to prevent XSS and format newlines
         const escapedMessage = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         const messageHtml = escapedMessage.replace(/\n/g, '<br>');
 
-        messageContainerHtml = `
+        const messageContainerHtml = `
             <div class="flex justify-end items-end mb-4 animate-fade-in">
-                <div class="bg-blue-100 p-3 rounded-lg rounded-br-none max-w-xs lg:max-w-md">
-                    <p class="primary-text">${messageHtml}</p>
+                <div class="user-message-content p-3 rounded-lg rounded-br-none max-w-xs lg:max-w-md">
+                    <p style="color: var(--neon-cyan); margin: 0;">${messageHtml}</p>
                 </div>
-                <div class="flex-shrink-0 h-8 w-8 rounded-full bg-primary-color flex items-center justify-center ml-3">
+                <div class="flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center ml-3" style="background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);">
                     <i class="fas fa-user text-white text-sm"></i>
                 </div>
             </div>
         `;
+        chatMessages.insertAdjacentHTML('beforeend', messageContainerHtml);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     } else { // bot
-        // Parse markdown for bot responses using the 'marked' library
-        const messageHtml = marked.parse(message);
-
-        messageContainerHtml = `
-            <div class="flex justify-start items-end mb-4 animate-fade-in">
-                <div class="flex-shrink-0 h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center mr-3">
-                    <i class="fas fa-robot text-gray-600"></i>
+        if (useTypingEffect) {
+            typeMessage(message);
+        } else {
+            const messageHtml = marked.parse(message);
+            const messageContainerHtml = `
+                <div class="flex justify-start items-end mb-4 animate-fade-in">
+                    <div class="flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center mr-3" style="background: linear-gradient(135deg, rgba(0, 217, 255, 0.3), rgba(163, 102, 255, 0.3)); border: 1px solid var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 217, 255, 0.4);">
+                        <i class="fas fa-robot" style="color: var(--neon-cyan);"></i>
+                    </div>
+                    <div class="bot-message-content p-3 rounded-lg rounded-bl-none max-w-xs lg:max-w-md">
+                        ${messageHtml}
+                    </div>
                 </div>
-                <div class="bot-message-content bg-gray-200 text-gray-800 p-3 rounded-lg rounded-bl-none max-w-xs lg:max-w-md">
-                    ${messageHtml}
-                </div>
-            </div>
-        `;
+            `;
+            chatMessages.insertAdjacentHTML('beforeend', messageContainerHtml);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
     }
-    
+};
+
+// Typing effect function
+const typeMessage = (message) => {
+    const messageId = 'bot-msg-' + Date.now();
+    const messageContainerHtml = `
+        <div class="flex justify-start items-end mb-4 animate-fade-in">
+            <div class="flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center mr-3" style="background: linear-gradient(135deg, rgba(0, 217, 255, 0.3), rgba(163, 102, 255, 0.3)); border: 1px solid var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 217, 255, 0.4);">
+                <i class="fas fa-robot" style="color: var(--neon-cyan);"></i>
+            </div>
+            <div class="bot-message-content p-3 rounded-lg rounded-bl-none max-w-xs lg:max-w-md">
+                <div id="${messageId}"></div><span class="typing-cursor"></span>
+            </div>
+        </div>
+    `;
     chatMessages.insertAdjacentHTML('beforeend', messageContainerHtml);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+    const messageElement = document.getElementById(messageId);
+    let charIndex = 0;
+    const speed = 20; // milliseconds per character
+    
+    const typeChar = () => {
+        if (charIndex < message.length) {
+            const char = message.charAt(charIndex);
+            messageElement.textContent += char;
+            charIndex++;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            setTimeout(typeChar, speed);
+        } else {
+            // Remove cursor and parse markdown after typing complete
+            const cursor = messageElement.parentElement.querySelector('.typing-cursor');
+            if (cursor) cursor.remove();
+            const fullHtml = marked.parse(message);
+            messageElement.parentElement.innerHTML = fullHtml;
+        }
+    };
+    
+    typeChar();
 };
 
 const handleChatSubmit = async (e) => {
@@ -180,12 +219,12 @@ const handleChatSubmit = async (e) => {
 
         const data = await response.json();
         document.getElementById('typing-indicator')?.remove();
-        addMessage('bot', data.response);
+        addMessage('bot', data.response, true); // Enable typing effect
         chatHistory.push({ "role": "assistant", "content": data.response });
     } catch (error) {
         console.error('Error with chat API:', error);
         document.getElementById('typing-indicator')?.remove();
-        addMessage('bot', 'Sorry, I seem to be having trouble connecting. Please try again later.');
+        addMessage('bot', 'Sorry, I seem to be having trouble connecting. Please try again later.', true);
     }
 };
 
