@@ -42,7 +42,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Animated background grid */
+/* Animated background grid with scanlines */
 body::before {
     content: '';
     position: fixed;
@@ -51,12 +51,33 @@ body::before {
     width: 100%;
     height: 100%;
     background-image: 
-        linear-gradient(0deg, transparent 24%, rgba(0, 217, 255, 0.05) 25%, rgba(0, 217, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.05) 75%, rgba(0, 217, 255, 0.05) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 24%, rgba(0, 217, 255, 0.05) 25%, rgba(0, 217, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.05) 75%, rgba(0, 217, 255, 0.05) 76%, transparent 77%, transparent);
+        linear-gradient(0deg, transparent 24%, rgba(0, 217, 255, 0.08) 25%, rgba(0, 217, 255, 0.08) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.08) 75%, rgba(0, 217, 255, 0.08) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(0, 217, 255, 0.08) 25%, rgba(0, 217, 255, 0.08) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.08) 75%, rgba(0, 217, 255, 0.08) 76%, transparent 77%, transparent);
     background-size: 50px 50px;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.3;
+    opacity: 0.4;
+}
+
+/* Scanline effect overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(0, 217, 255, 0.03),
+        rgba(0, 217, 255, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    background-size: 100% 2px;
+    pointer-events: none;
+    z-index: 0;
+    animation: scanlines 8s linear infinite;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -66,6 +87,22 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    position: relative;
+}
+
+/* Add terminal brackets to headings */
+h1::before {
+    content: '[';
+    margin-right: 8px;
+    color: var(--neon-green);
+    font-weight: 900;
+}
+
+h1::after {
+    content: ']';
+    margin-left: 8px;
+    color: var(--neon-green);
+    font-weight: 900;
 }
 
 code {
@@ -92,39 +129,74 @@ code {
     background: linear-gradient(135deg, var(--neon-cyan) 0%, #00a8d4 100%);
     color: var(--bg-dark);
     padding: 12px 28px;
-    border-radius: 6px;
+    border-radius: 0px;
     font-weight: 700;
     transition: all 0.3s ease;
-    border: none;
+    border: 2px solid var(--neon-cyan);
     cursor: pointer;
-    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3), inset 0 0 20px rgba(0, 217, 255, 0.1);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-btn::before {
+    content: '> ';
+}
+
+.primary-btn::after {
+    content: ' <';
 }
 
 .primary-btn:hover {
     background: linear-gradient(135deg, var(--neon-cyan) 0%, #00d9ff 100%);
-    transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(0, 217, 255, 0.6), 0 10px 25px rgba(0, 217, 255, 0.2);
+    transform: translateY(-2px) skewX(-2deg);
+    box-shadow: 0 0 40px rgba(0, 217, 255, 0.8), 0 0 60px rgba(0, 217, 255, 0.4), inset 0 0 20px rgba(0, 217, 255, 0.2);
+    letter-spacing: 2px;
 }
 
 .secondary-btn {
     border: 2px solid var(--neon-purple);
     color: var(--neon-purple);
     padding: 10px 26px;
-    border-radius: 6px;
+    border-radius: 0px;
     font-weight: 700;
     transition: all 0.3s ease;
     background-color: transparent;
     cursor: pointer;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    position: relative;
+}
+
+.secondary-btn::before {
+    content: '$ ';
+}
+
+.secondary-btn::after {
+    content: '';
+    position: absolute;
+    right: 8px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 49% {
+        content: '_';
+    }
+    50%, 100% {
+        content: '';
+    }
 }
 
 .secondary-btn:hover {
-    background-color: rgba(163, 102, 255, 0.1);
-    box-shadow: 0 0 20px rgba(163, 102, 255, 0.4), inset 0 0 20px rgba(163, 102, 255, 0.1);
-    transform: translateY(-2px);
+    background-color: rgba(163, 102, 255, 0.15);
+    box-shadow: 0 0 30px rgba(163, 102, 255, 0.6), inset 0 0 20px rgba(163, 102, 255, 0.2), 0 0 10px rgba(163, 102, 255, 0.3);
+    transform: translateY(-2px) scaleX(1.02);
+    text-shadow: 0 0 10px rgba(163, 102, 255, 0.5);
 }
 
 /* ================================
@@ -144,34 +216,54 @@ code {
    Project Cards
 ================================ */
 .project-card {
-    border-radius: 12px;
+    border-radius: 0px;
     background-color: var(--surface);
-    border: 1px solid rgba(0, 217, 255, 0.2);
+    border: 2px solid rgba(0, 217, 255, 0.3);
     transition: all 0.4s ease;
     padding: 24px;
     position: relative;
     overflow: hidden;
+    font-family: 'Fira Code', monospace;
 }
 
 .project-card::before {
+    content: '█';
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    color: var(--neon-green);
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--neon-cyan) 0%, var(--neon-purple) 100%);
+    height: 100%;
+    background: linear-gradient(45deg, transparent 30%, rgba(0, 217, 255, 0.03) 50%, transparent 70%);
+    pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(0, 217, 255, 0.6);
-    box-shadow: 0 0 40px rgba(0, 217, 255, 0.2), 0 20px 40px rgba(0, 0, 0, 0.4);
+    transform: translateY(-8px) skewY(-1deg);
+    border-color: rgba(0, 217, 255, 0.8);
+    box-shadow: 
+        0 0 40px rgba(0, 217, 255, 0.3), 
+        0 20px 40px rgba(0, 0, 0, 0.6),
+        inset 0 0 20px rgba(0, 217, 255, 0.1);
 }
 
 .project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card:hover::after {
     opacity: 1;
 }
 
@@ -181,6 +273,14 @@ code {
     -webkit-background-clip: unset;
     -webkit-text-fill-color: unset;
     background-clip: unset;
+    font-family: 'Fira Code', monospace;
+    letter-spacing: 1px;
+}
+
+.project-card h3::before {
+    content: '// ';
+    color: var(--neon-green);
+    margin-right: 4px;
 }
 
 /* ================================
@@ -199,10 +299,22 @@ header {
 
 .nav-link {
     position: relative;
-    padding-bottom: 5px;
+    padding: 8px 12px;
     color: var(--text-secondary);
-    transition: color 0.3s ease;
-    font-weight: 600;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    text-transform: uppercase;
+}
+
+.nav-link::before {
+    content: '$ ';
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: var(--neon-green);
 }
 
 .nav-link::after {
@@ -219,6 +331,12 @@ header {
 
 .nav-link:hover {
     color: var(--neon-cyan);
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.2), inset 0 0 15px rgba(0, 217, 255, 0.05);
+}
+
+.nav-link:hover::before {
+    opacity: 1;
 }
 
 .nav-link:hover::after {
@@ -260,13 +378,41 @@ header {
     transform: translateY(0);
 }
 
-/* Glow effect on headings */
+/* Glow effect on headings with flicker */
 @keyframes glow-pulse {
     0%, 100% {
-        text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        text-shadow: 0 0 10px rgba(0, 217, 255, 0.3), 0 0 20px rgba(0, 217, 255, 0.1);
     }
     50% {
-        text-shadow: 0 0 20px rgba(0, 217, 255, 0.6);
+        text-shadow: 0 0 20px rgba(0, 217, 255, 0.6), 0 0 40px rgba(0, 217, 255, 0.3);
+    }
+}
+
+/* Hacker glitch effect for title */
+@keyframes glitch-effect {
+    0% {
+        clip-path: inset(40% 0 61% 0);
+        transform: translate(-2px, -2px);
+    }
+    20% {
+        clip-path: inset(92% 0 1% 0);
+        transform: translate(2px, 2px);
+    }
+    40% {
+        clip-path: inset(43% 0 1% 0);
+        transform: translate(-2px, 2px);
+    }
+    60% {
+        clip-path: inset(25% 0 58% 0);
+        transform: translate(2px, -2px);
+    }
+    80% {
+        clip-path: inset(54% 0 7% 0);
+        transform: translate(-2px, -2px);
+    }
+    100% {
+        clip-path: inset(58% 0 43% 0);
+        transform: translate(2px, 2px);
     }
 }
 
@@ -283,6 +429,76 @@ html {
 ::selection {
     background-color: rgba(0, 217, 255, 0.3);
     color: var(--neon-cyan);
+}
+
+/* Scanlines animation */
+@keyframes scanlines {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+/* Glitch effect */
+@keyframes glitch {
+    0%, 100% {
+        text-shadow: -2px 0 #ff006e, 2px 0 #00d9ff;
+    }
+    14% {
+        text-shadow: -2px 0 #ff006e, 2px 0 #00d9ff;
+    }
+    15% {
+        text-shadow: -2px 0 #00d9ff, 2px 0 #ff006e;
+    }
+    49% {
+        text-shadow: -2px 0 #00d9ff, 2px 0 #ff006e;
+    }
+    50% {
+        text-shadow: -2px 0 #ff006e, 2px 0 #00d9ff;
+    }
+    100% {
+        text-shadow: -2px 0 #ff006e, 2px 0 #00d9ff;
+    }
+}
+
+/* Neon flicker */
+@keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 0 0 10px rgba(0, 217, 255, 0.5), 0 0 20px rgba(0, 217, 255, 0.3), 0 0 40px rgba(0, 217, 255, 0.2);
+    }
+    20%, 24%, 55% {
+        text-shadow: 0 0 5px rgba(0, 217, 255, 0.2);
+    }
+}
+
+/* Data stream animation */
+@keyframes data-stream {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh);
+    }
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+    0%, 49% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
+    }
 }
 
 /* ================================
@@ -560,15 +776,32 @@ section:nth-child(odd) {
 ================================ */
 .publication-item {
     background-color: var(--surface);
-    border-left: 3px solid var(--neon-cyan);
-    border: 1px solid rgba(0, 217, 255, 0.2);
-    border-left: 3px solid var(--neon-cyan);
+    border: 2px solid rgba(0, 217, 255, 0.3);
+    border-left: 4px solid var(--neon-cyan);
     transition: all 0.3s ease;
+    position: relative;
+    border-radius: 0px;
+    font-family: 'Fira Code', monospace;
+    padding: 20px;
+    margin-left: 8px;
+}
+
+.publication-item::before {
+    content: '→';
+    position: absolute;
+    left: -25px;
+    top: 20px;
+    color: var(--neon-cyan);
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .publication-item:hover {
-    box-shadow: 0 0 30px rgba(0, 217, 255, 0.15);
-    border-color: rgba(0, 217, 255, 0.4);
+    box-shadow: 
+        0 0 40px rgba(0, 217, 255, 0.3),
+        inset 0 0 20px rgba(0, 217, 255, 0.1);
+    border-color: rgba(0, 217, 255, 0.7);
+    transform: translateX(4px);
 }
 
 .publication-item h3 {
@@ -577,6 +810,14 @@ section:nth-child(odd) {
     -webkit-background-clip: unset;
     -webkit-text-fill-color: unset;
     background-clip: unset;
+    font-family: 'Fira Code', monospace;
+    letter-spacing: 1px;
+}
+
+.publication-item h3::before {
+    content: '[pub] ';
+    color: var(--neon-cyan);
+    margin-right: 4px;
 }
 
 .publication-item p {
