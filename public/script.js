@@ -260,7 +260,7 @@ document.querySelectorAll('.system-status').forEach(status => {
     }, 2000);
 });
 
-// Matrix-style digital rain effect
+// Binary digital rain effect
 function createRainEffect() {
     const canvas = document.createElement('canvas');
     canvas.id = 'matrix-rain';
@@ -270,9 +270,9 @@ function createRainEffect() {
     canvas.style.width = '100%';
     canvas.style.height = '100%';
     canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '1';
-    canvas.style.opacity = '0.15';
-    document.body.appendChild(canvas);
+    canvas.style.zIndex = '0';
+    canvas.style.opacity = '0.2';
+    document.body.insertBefore(canvas, document.body.firstChild);
 
     const ctx = canvas.getContext('2d');
     
@@ -283,8 +283,8 @@ function createRainEffect() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-    const fontSize = 14;
+    const chars = '01';
+    const fontSize = 16;
     const columns = Math.floor(canvas.width / fontSize);
     const drops = Array(columns).fill(1);
 
