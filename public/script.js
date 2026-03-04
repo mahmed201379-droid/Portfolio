@@ -192,3 +192,70 @@ const handleChatSubmit = async (e) => {
 if (chatForm) {
     chatForm.addEventListener('submit', handleChatSubmit);
 }
+
+/* ================================
+   ENHANCED HACKER EFFECTS
+================================ */
+
+// Add glitch effect on page load
+window.addEventListener('load', () => {
+    document.querySelectorAll('h1, h2, h3').forEach(el => {
+        el.style.animation = `glow-flicker 3s ease-in-out infinite`;
+    });
+});
+
+// Add interactive glitch on hover for headings
+document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(heading => {
+    heading.addEventListener('mouseenter', function() {
+        this.style.animation = `digital-glitch 0.6s ease-out`;
+    });
+    heading.addEventListener('mouseleave', function() {
+        this.style.animation = `glow-flicker 3s ease-in-out infinite`;
+    });
+});
+
+// Add random data corruption effect on project cards
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        const randomNum = Math.floor(Math.random() * 3);
+        this.style.filter = `hue-rotate(${randomNum * 15}deg) brightness(${1 + randomNum * 0.05})`;
+    });
+    card.addEventListener('mouseleave', function() {
+        this.style.filter = 'hue-rotate(0deg) brightness(1)';
+    });
+});
+
+// Add terminal cursor effect
+const cursorStyle = document.createElement('style');
+cursorStyle.textContent = `
+    .terminal-command::after {
+        animation: terminal-blink 1s infinite;
+    }
+`;
+document.head.appendChild(cursorStyle);
+
+// Random scanline intensity variation
+setInterval(() => {
+    const scanlines = document.querySelectorAll('body::after');
+    const opacity = 0.3 + Math.random() * 0.2;
+    document.body.style.setProperty('--scanline-opacity', opacity);
+}, 3000);
+
+// Add digital rain effect to footer on hover
+const footer = document.querySelector('footer');
+if (footer) {
+    footer.addEventListener('mouseenter', function() {
+        this.style.textShadow = '0 0 10px rgba(0, 217, 255, 0.5)';
+    });
+    footer.addEventListener('mouseleave', function() {
+        this.style.textShadow = 'none';
+    });
+}
+
+// Add system status indicator animation
+document.querySelectorAll('.system-status').forEach(status => {
+    setInterval(() => {
+        const colors = ['var(--neon-green)', 'var(--neon-cyan)', 'var(--neon-purple)'];
+        status.style.color = colors[Math.floor(Math.random() * colors.length)];
+    }, 2000);
+});
