@@ -11,6 +11,415 @@ if (menuToggle && mobileMenu) {
 }
 
 /* ================================
+   Creative Neon Mouse Trail Effect (Canvas-based - Performance Optimized)
+================================ */
+class NeonTrailCanvas {
+    constructor() {
+        this.canvas = document.createElement('canvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.canvas.id = 'neon-trail-canvas';
+        this.canvas.style.cssText = 'position: fixed; top: 0; left: 0; pointer-events: none; z-index: 0;';
+        document.body.insertBefore(this.canvas, document.body.firstChild);
+        
+        this.trails = [];
+        this.maxTrails = 12;
+        this.colors = ['#00d9ff', '#a366ff', '#ff006e', '#39ff14'];
+        this.mouseX = 0;
+        this.mouseY = 0;
+        this.throttleMouseMove = true;
+        
+        this.resize();
+        this.init();
+    }
+
+    resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+    }
+
+    init() {
+        window.addEventListener('resize', () => this.resize());
+        
+        document.addEventListener('mousemove', (e) => {
+            if (this.throttleMouseMove) {
+                this.mouseX = e.clientX;
+                this.mouseY = e.clientY;
+                this.createTrail();
+                this.throttleMouseMove = false;
+                setTimeout(() => { this.throttleMouseMove = true; }, 50);
+            }
+        });
+        
+        this.animate();
+    }
+
+    createTrail() {
+        this.trails.push({
+            x: this.mouseX,
+            y: this.mouseY,
+            life: 100,
+            color: this.colors[Math.floor(Math.random() * this.colors.length)],
+            size: Math.random() * 3 + 1.5
+        });
+        
+        if (this.trails.length > this.maxTrails) {
+            this.trails.shift();
+        }
+    }
+
+    animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        for (let i = this.trails.length - 1; i >= 0; i--) {
+            const trail = this.trails[i];
+            trail.life -= 8;
+            
+            if (trail.life <= 0) {
+                this.trails.splice(i, 1);
+                continue;
+            }
+            
+            const opacity = trail.life / 100;
+            this.ctx.fillStyle = trail.color + Math.floor(opacity * 255).toString(16).padStart(2, '0');
+            this.ctx.shadowColor = trail.color;
+            this.ctx.shadowBlur = trail.size * 3;
+            
+            this.ctx.beginPath();
+            this.ctx.arc(trail.x, trail.y, trail.size, 0, Math.PI * 2);
+            this.ctx.fill();
+        }
+        
+        requestAnimationFrame(() => this.animate());
+    }
+}
+
+// Initialize only if not on slow connection
+if (navigator.connection?.effectiveType !== '4g' || !navigator.connection) {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => new NeonTrailCanvas());
+    } else {
+        new NeonTrailCanvas();
+    }
+}
+
+/* ================================
+   HACKER VIBE ENHANCEMENTS - Performance Optimized
+================================ */
+
+// 1. Boot Sequence Animation on Page Load
+const bootSequence = () => {
+    const bootMessages = [
+        '> INITIALIZING NEURAL.SYS',
+        '> LOADING CYBERPUNK.EXE',
+        '> ESTABLISHING SECURE CONNECTION...',
+        '> NEURAL NETWORK ONLINE',
+        '> READY FOR INTERACTION'
+    ];
+    
+    let index = 0;
+    const style = document.createElement('style');
+    
+    const showBootMessage = () => {
+        if (index < bootMessages.length) {
+            console.log('%c' + bootMessages[index], 'color: #00d9ff; font-weight: bold; font-family: monospace; font-size: 12px;');
+            index++;
+            setTimeout(showBootMessage, 300);
+        }
+    };
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', showBootMessage);
+    } else {
+        showBootMessage();
+    }
+};
+
+bootSequence();
+
+// 2. CRT Scanlines Overlay (CSS-based, very efficient)
+const addScanlineEffect = () => {
+    const scanlineStyle = document.createElement('style');
+    scanlineStyle.textContent = `
+        /* Dynamic Scanline Effect */
+        body {
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15) 0px,
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 999;
+            animation: scanline-flicker 0.15s infinite;
+        }
+        
+        @keyframes scanline-flicker {
+            0% { opacity: 0.15; }
+            50% { opacity: 0.25; }
+            100% { opacity: 0.15; }
+        }
+    `;
+    document.head.appendChild(scanlineStyle);
+};
+
+addScanlineEffect();
+
+// 3. Random Screen Glitch Effect (low frequency)
+const addRandomGlitch = () => {
+    setInterval(() => {
+        if (Math.random() > 0.92) {
+            document.documentElement.style.filter = 'hue-rotate(15deg)';
+            setTimeout(() => {
+                document.documentElement.style.filter = 'hue-rotate(0deg)';
+            }, 80);
+        }
+    }, 1500);
+};
+
+addRandomGlitch();
+
+// 4. Typewriter Effect on Section Headers
+const typewriterHeaders = () => {
+    document.querySelectorAll('h2').forEach(header => {
+        const text = header.textContent;
+        if (text.length > 0 && !header.closest('.fade-in')) {
+            header.textContent = '';
+            header.style.minHeight = '1.5em';
+            
+            let index = 0;
+            const typeChar = () => {
+                if (index < text.length) {
+                    header.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(typeChar, 30);
+                }
+            };
+            
+            // Trigger on scroll into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && header.textContent === '') {
+                        typeChar();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(header);
+        }
+    });
+};
+
+setTimeout(typewriterHeaders, 500);
+
+// 5. Add HUD Corner Brackets to Key Elements
+const addHUDBrackets = () => {
+    const hudStyle = document.createElement('style');
+    hudStyle.textContent = `
+        .hud-target {
+            position: relative;
+        }
+        
+        .hud-target::before,
+        .hud-target::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-cyan);
+            animation: hud-pulse 1.5s ease-in-out infinite;
+        }
+        
+        .hud-target::before {
+            top: -8px;
+            left: -8px;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        .hud-target::after {
+            bottom: -8px;
+            right: -8px;
+            border-left: none;
+            border-top: none;
+        }
+        
+        @keyframes hud-pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    `;
+    document.head.appendChild(hudStyle);
+    
+    // Apply to hero and main project cards
+    document.querySelectorAll('.hero-content, .project-card:first-of-type').forEach(el => {
+        el.classList.add('hud-target');
+    });
+};
+
+setTimeout(addHUDBrackets, 1000);
+
+// 6. Glitch Text Effect on Hover for Project Cards
+const addTextGlitch = () => {
+    document.querySelectorAll('.project-card h3').forEach(card => {
+        const originalText = card.textContent;
+        
+        card.addEventListener('mouseenter', function() {
+            let glitchCount = 0;
+            const glitchDuration = 8; // More glitch iterations
+            
+            const glitchInterval = setInterval(() => {
+                if (glitchCount < glitchDuration) {
+                    // Create completely random characters for glitch effect
+                    const glitchText = originalText.split('').map(() => {
+                        const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`';
+                        return chars.charAt(Math.floor(Math.random() * chars.length));
+                    }).join('');
+                    this.textContent = glitchText;
+                    glitchCount++;
+                } else {
+                    // Always restore original text
+                    this.textContent = originalText;
+                    clearInterval(glitchInterval);
+                }
+            }, 80);
+        });
+        
+        // Ensure original text is always displayed on mouseleave
+        card.addEventListener('mouseleave', function() {
+            this.textContent = originalText;
+        });
+    });
+};
+
+setTimeout(addTextGlitch, 800);
+
+// 7. Add Data Stream Animation to Background
+const addDataStream = () => {
+    const dataStyle = document.createElement('style');
+    dataStyle.textContent = `
+        @keyframes data-flow {
+            0% { transform: translateY(-100%); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+        
+        .data-stream {
+            position: fixed;
+            right: 20px;
+            top: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            color: var(--neon-green);
+            opacity: 0.3;
+            pointer-events: none;
+            white-space: nowrap;
+            mix-blend-mode: screen;
+            z-index: 1;
+            animation: data-flow 8s linear infinite;
+        }
+    `;
+    document.head.appendChild(dataStyle);
+};
+
+addDataStream();
+
+// 8. Interactive Element Highlight on Focus
+const addFocusGlow = () => {
+    const focusStyle = document.createElement('style');
+    focusStyle.textContent = `
+        input:focus,
+        textarea:focus,
+        select:focus {
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.6), inset 0 0 10px rgba(0, 217, 255, 0.2) !important;
+            border-color: var(--neon-cyan) !important;
+        }
+        
+        button:hover,
+        a:hover {
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.8);
+        }
+    `;
+    document.head.appendChild(focusStyle);
+};
+
+addFocusGlow();
+
+// 9. Pixel Corruption Effect on Random Elements
+const addPixelNoise = () => {
+    const noiseCanvas = document.createElement('canvas');
+    noiseCanvas.width = 100;
+    noiseCanvas.height = 100;
+    const ctx = noiseCanvas.getContext('2d');
+    
+    for (let i = 0; i < 100; i++) {
+        ctx.fillStyle = `rgba(0, 217, 255, ${Math.random() * 0.3})`;
+        ctx.fillRect(
+            Math.random() * 100,
+            Math.random() * 100,
+            Math.random() * 10,
+            Math.random() * 10
+        );
+    }
+    
+    const noiseStyle = document.createElement('style');
+    noiseStyle.textContent = `
+        .project-card {
+            background-image: url('${noiseCanvas.toDataURL()}');
+            background-size: 200px;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+        }
+    `;
+    document.head.appendChild(noiseStyle);
+};
+
+setTimeout(addPixelNoise, 1200);
+
+// 10. Signal Strength Indicator Animation
+const addSignalIndicator = () => {
+    const html = `
+        <div id="signal-strength" style="
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 3px;
+            z-index: 100;
+            opacity: 0.4;
+        ">
+            <div style="width: 3px; height: 8px; background: var(--neon-green); animation: signal-bar 0.6s ease-in-out infinite;"></div>
+            <div style="width: 3px; height: 12px; background: var(--neon-green); animation: signal-bar 0.6s ease-in-out infinite 0.1s;"></div>
+            <div style="width: 3px; height: 16px; background: var(--neon-green); animation: signal-bar 0.6s ease-in-out infinite 0.2s;"></div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', html);
+    
+    const signalStyle = document.createElement('style');
+    signalStyle.textContent = `
+        @keyframes signal-bar {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+    `;
+    document.head.appendChild(signalStyle);
+};
+
+setTimeout(addSignalIndicator, 1500);
+
+/* ================================
    Back to Top Button
 ================================ */
 const backToTopButton = document.getElementById('backToTop');
@@ -313,14 +722,14 @@ function createRainEffect() {
     canvas.style.opacity = '0.2';
     document.body.insertBefore(canvas, document.body.firstChild);
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', resizeCanvas, { passive: true });
 
     const chars = '01';
     const fontSize = 16;

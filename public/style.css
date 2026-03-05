@@ -1805,3 +1805,347 @@ section:nth-child(odd) {
         font-size: 1rem;
     }
 }
+
+/* Creative Enhancements */
+
+/* Animated Gradient Orbs in Background */
+@keyframes float-orb {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes float-orb-2 {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.35;
+    }
+}
+
+/* Floating Background Elements - Optimized for Performance */
+body::before {
+    content: '';
+    position: fixed;
+    top: 10%;
+    left: 5%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 217, 255, 0.3), transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: float-orb 12s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+    will-change: opacity;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 20%;
+    right: 10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(163, 102, 255, 0.25), transparent 70%);
+    border-radius: 50%;
+    filter: blur(80px);
+    animation: float-orb-2 16s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+    will-change: opacity;
+}
+
+/* Holographic Section Title Effect */
+@keyframes holographic-shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.section-title-holoic {
+    background: linear-gradient(90deg, 
+        var(--neon-cyan) 0%,
+        var(--neon-purple) 25%,
+        var(--neon-green) 50%,
+        var(--neon-pink) 75%,
+        var(--neon-cyan) 100%);
+    background-size: 1000px 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: holographic-shimmer 6s linear infinite;
+}
+
+/* Enhanced Project Card with Glassmorphism */
+.project-card {
+    backdrop-filter: blur(10px);
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.03), rgba(163, 102, 255, 0.02)) !important;
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.project-card:hover::before {
+    left: 100%;
+}
+
+.project-card:hover {
+    border-color: rgba(0, 217, 255, 0.5);
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.3), inset 0 0 20px rgba(0, 217, 255, 0.05);
+    transform: translateY(-8px);
+    will-change: transform, box-shadow;
+}
+
+/* Animated Badge Pulse */
+@keyframes badge-glow {
+    0%, 100% {
+        box-shadow: 0 0 8px rgba(0, 217, 255, 0.3), inset 0 0 8px rgba(0, 217, 255, 0.05);
+    }
+    50% {
+        box-shadow: 0 0 16px rgba(0, 217, 255, 0.6), inset 0 0 12px rgba(0, 217, 255, 0.1);
+    }
+}
+
+/* Enhanced Skill Item with Hover Glow */
+.skill-item {
+    position: relative;
+}
+
+.skill-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(0, 217, 255, 0.2), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+    z-index: -1;
+}
+
+.skill-item:hover::before {
+    opacity: 1;
+}
+
+/* Animated Text Shimmer for Main Heading */
+@keyframes text-shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+h1.glitch-text {
+    background: linear-gradient(90deg, 
+        var(--neon-cyan) 0%,
+        var(--neon-cyan) 20%,
+        var(--neon-purple) 40%,
+        var(--neon-cyan) 60%,
+        var(--neon-cyan) 80%,
+        var(--neon-pink) 100%);
+    background-size: 1000px auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shimmer 4s linear infinite;
+}
+
+/* Performance: Reduce Motion for Users Who Prefer It */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    body::before,
+    body::after {
+        animation: none !important;
+    }
+}
+
+/* ================================
+   ADVANCED HACKER VIBE EFFECTS
+================================ */
+
+/* Holographic Text Layer Effect */
+@keyframes hologram-shift {
+    0% {
+        text-shadow: 
+            0 0 10px rgba(0, 217, 255, 0.8),
+            -2px 2px 0 rgba(255, 0, 110, 0.5),
+            2px -2px 0 rgba(57, 255, 20, 0.5);
+    }
+    50% {
+        text-shadow: 
+            0 0 20px rgba(0, 217, 255, 0.8),
+            -3px 3px 0 rgba(255, 0, 110, 0.6),
+            3px -3px 0 rgba(57, 255, 20, 0.6);
+    }
+    100% {
+        text-shadow: 
+            0 0 10px rgba(0, 217, 255, 0.8),
+            -2px 2px 0 rgba(255, 0, 110, 0.5),
+            2px -2px 0 rgba(57, 255, 20, 0.5);
+    }
+}
+
+h1, h2, h3 {
+    animation: hologram-shift 3s ease-in-out infinite;
+}
+
+/* Chromatic Aberration Hover Effect */
+@keyframes chromatic-glitch {
+    0% {
+        text-shadow: 
+            -2px 0 0 rgba(255, 0, 110, 0.7),
+            2px 0 0 rgba(0, 255, 136, 0.7),
+            0 0 20px rgba(0, 217, 255, 0.5);
+    }
+    50% {
+        text-shadow: 
+            3px 0 0 rgba(255, 0, 110, 0.5),
+            -3px 0 0 rgba(0, 255, 136, 0.5),
+            0 0 20px rgba(0, 217, 255, 0.8);
+    }
+    100% {
+        text-shadow: 
+            -2px 0 0 rgba(255, 0, 110, 0.7),
+            2px 0 0 rgba(0, 255, 136, 0.7),
+            0 0 20px rgba(0, 217, 255, 0.5);
+    }
+}
+
+.project-card:hover h3 {
+    animation: chromatic-glitch 0.8s ease-out;
+}
+
+/* Glitch Layer Effect for Accent Text */
+@keyframes glitch-layers {
+    0% {
+        text-shadow: 
+            -2px -2px 0 #ff006e,
+            2px 2px 0 #00d9ff;
+    }
+    25% {
+        text-shadow: 
+            -3px -3px 0 #a366ff,
+            3px 3px 0 #39ff14;
+    }
+    50% {
+        text-shadow: 
+            2px -2px 0 #00d9ff,
+            -2px 2px 0 #ff006e;
+    }
+    75% {
+        text-shadow: 
+            3px -3px 0 #39ff14,
+            -3px 3px 0 #a366ff;
+    }
+    100% {
+        text-shadow: 
+            -2px -2px 0 #ff006e,
+            2px 2px 0 #00d9ff;
+    }
+}
+
+.accent-text {
+    animation: glitch-layers 2.5s ease-in-out infinite;
+}
+
+/* Animated Border Glow for Skills */
+@keyframes border-glow {
+    0% {
+        border-color: rgba(0, 217, 255, 0.3);
+        box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
+    }
+    50% {
+        border-color: rgba(0, 217, 255, 0.8);
+        box-shadow: 0 0 30px rgba(0, 217, 255, 0.6), inset 0 0 20px rgba(0, 217, 255, 0.1);
+    }
+    100% {
+        border-color: rgba(0, 217, 255, 0.3);
+        box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
+    }
+}
+
+.skill-item {
+    animation: border-glow 4s ease-in-out infinite;
+}
+
+/* VHS Tape Distortion on Hover */
+@keyframes vhs-distort {
+    0% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(-2px);
+    }
+    40% {
+        transform: translateX(2px);
+    }
+    60% {
+        transform: translateX(-1px);
+    }
+    80% {
+        transform: translateX(1px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.project-card {
+    position: relative;
+}
+
+/* Neon Bracket Animation */
+.cyber-bracket {
+    animation: bracket-pulse 2s ease-in-out infinite;
+}
+
+@keyframes bracket-pulse {
+    0%, 100% {
+        opacity: 0.6;
+        text-shadow: 0 0 5px rgba(0, 217, 255, 0.5);
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 20px rgba(0, 217, 255, 0.9);
+    }
+}
+
+/* Enhanced Link Glow */
+a {
+    transition: text-shadow 0.3s ease;
+}
+
+a:hover {
+    text-shadow: 0 0 15px rgba(0, 217, 255, 0.8), 0 0 30px rgba(0, 217, 255, 0.4);
+}
