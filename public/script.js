@@ -1,34 +1,4 @@
 /* ================================
-   Mobile Detection & Performance Config
-================================ */
-const isMobile = () => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
-        || window.innerWidth < 768 
-        || ('ontouchstart' in window);
-};
-
-const PERFORMANCE_CONFIG = {
-    mobile: {
-        maxTrails: 6,
-        rainSpeed: 100,
-        rainColumns: 50,
-        enableMouseTrail: false,
-        enableGlitchEffects: false,
-        enableHackerEffects: false
-    },
-    desktop: {
-        maxTrails: 12,
-        rainSpeed: 50,
-        rainColumns: 100,
-        enableMouseTrail: true,
-        enableGlitchEffects: true,
-        enableHackerEffects: true
-    }
-};
-
-const config = isMobile() ? PERFORMANCE_CONFIG.mobile : PERFORMANCE_CONFIG.desktop;
-
-/* ================================
    Mobile Menu Toggle
 ================================ */
 const menuToggle = document.getElementById('menuToggle');
@@ -52,7 +22,7 @@ class NeonTrailCanvas {
         document.body.insertBefore(this.canvas, document.body.firstChild);
         
         this.trails = [];
-        this.maxTrails = config.maxTrails; // Use config
+        this.maxTrails = 12;
         this.colors = ['#00d9ff', '#a366ff', '#ff006e', '#39ff14'];
         this.mouseX = 0;
         this.mouseY = 0;
@@ -123,8 +93,8 @@ class NeonTrailCanvas {
     }
 }
 
-// Initialize only if enabled for current device
-if (config.enableMouseTrail) {
+// Initialize only if not on slow connection
+if (navigator.connection?.effectiveType !== '4g' || !navigator.connection) {
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => new NeonTrailCanvas());
     } else {
@@ -138,8 +108,6 @@ if (config.enableMouseTrail) {
 
 // 1. Boot Sequence Animation on Page Load
 const bootSequence = () => {
-    if (!config.enableHackerEffects) return; // Skip on mobile
-    
     const bootMessages = [
         '> INITIALIZING NEURAL.SYS',
         '> LOADING CYBERPUNK.EXE',
@@ -170,7 +138,6 @@ bootSequence();
 
 // 2. CRT Scanlines Overlay (CSS-based, very efficient)
 const addScanlineEffect = () => {
-    if (!config.enableHackerEffects) return; // Skip on mobile
     const scanlineStyle = document.createElement('style');
     scanlineStyle.textContent = `
         /* Dynamic Scanline Effect */
@@ -210,7 +177,6 @@ addScanlineEffect();
 
 // 3. Random Screen Glitch Effect (low frequency)
 const addRandomGlitch = () => {
-    if (!config.enableHackerEffects) return; // Skip on mobile
     setInterval(() => {
         if (Math.random() > 0.92) {
             document.documentElement.style.filter = 'hue-rotate(15deg)';
@@ -225,7 +191,6 @@ addRandomGlitch();
 
 // 4. Typewriter Effect on Section Headers
 const typewriterHeaders = () => {
-    if (!config.enableHackerEffects) return; // Skip on mobile
     document.querySelectorAll('h2').forEach(header => {
         const text = header.textContent;
         if (text.length > 0 && !header.closest('.fade-in')) {
@@ -303,9 +268,7 @@ const addHUDBrackets = () => {
     });
 };
 
-if (config.enableHackerEffects) {
-    setTimeout(addHUDBrackets, 1000);
-}
+setTimeout(addHUDBrackets, 1000);
 
 // 6. Glitch Text Effect on Hover for Project Cards
 const addTextGlitch = () => {
@@ -340,9 +303,7 @@ const addTextGlitch = () => {
     });
 };
 
-if (config.enableGlitchEffects) {
-    setTimeout(addTextGlitch, 800);
-}
+setTimeout(addTextGlitch, 800);
 
 // 7. Add Data Stream Animation to Background
 const addDataStream = () => {
@@ -373,9 +334,7 @@ const addDataStream = () => {
     document.head.appendChild(dataStyle);
 };
 
-if (config.enableHackerEffects) {
-    addDataStream();
-}
+addDataStream();
 
 // 8. Interactive Element Highlight on Focus
 const addFocusGlow = () => {
@@ -774,9 +733,7 @@ function createRainEffect() {
 
     const chars = '01';
     const fontSize = 16;
-    // Use config for mobile optimization - fewer columns on mobile
-    const maxColumns = isMobile() ? config.rainColumns : Math.floor(canvas.width / fontSize);
-    const columns = Math.min(maxColumns, Math.floor(canvas.width / fontSize));
+    const columns = Math.floor(canvas.width / fontSize);
     const drops = Array(columns).fill(1);
 
     function draw() {
@@ -800,8 +757,7 @@ function createRainEffect() {
         }
     }
     
-    // Use config for mobile-optimized speed
-    setInterval(draw, config.rainSpeed);
+    setInterval(draw, 50);
 }
 
 // Initialize rain effect after page load
