@@ -377,95 +377,242 @@
             <span style="color: var(--neon-cyan); font-weight: bold; margin-left: 8px;" class="cyber-bracket">}</span>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-            <!-- AI & ML Skills -->
-            <div class="skill-category p-8 fade-in" style="animation-delay: 0.2s; background-color: var(--surface); border: 2px solid rgba(0, 217, 255, 0.4); border-radius: 0px; position: relative;">
-                <div style="position: absolute; top: 8px; left: 8px; color: var(--neon-green); font-weight: bold; font-size: 1.2rem;">[</div>
-                <div style="position: absolute; top: 8px; right: 8px; color: var(--neon-green); font-weight: bold; font-size: 1.2rem;">]</div>
-                <h3 class="text-xl font-bold mb-4 flex items-center justify-center" style="color: var(--neon-cyan); text-transform: uppercase; letter-spacing: 1px; font-family: 'Fira Code', monospace;">
-                    <i class="fas fa-brain mr-3"></i> AI & ML
-                </h3>
-                <div>
-                    <span class="skill-tag">PyTorch</span>
-                    <span class="skill-tag">TensorFlow</span>
-                    <span class="skill-tag">Scikit-learn</span>
-                    <span class="skill-tag">Pandas</span>
-                    <span class="skill-tag">NumPy</span>
-                    <span class="skill-tag">Matplotlib</span>
-                    <span class="skill-tag">Seaborn</span>
-                    <span class="skill-tag">OpenCV</span>
-                    <span class="skill-tag">Keras</span>
+        <!-- AI & ML Skills Section -->
+        <div class="skill-section fade-in" style="animation-delay: 0.2s;">
+            <div class="skill-category-header">
+                <i class="fas fa-brain"></i>
+                <h3>AI & Machine Learning</h3>
+                <span class="category-accent cyan"></span>
+            </div>
+            <div class="skill-grid">
+                <div class="skill-item" data-skill="PyTorch">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="50" r="35"/><path d="M50 20 Q65 35 65 50 Q65 65 50 80"/><path d="M50 20 Q35 35 35 50 Q35 65 50 80"/></svg>
+                    </div>
+                    <span class="skill-name">PyTorch</span>
+                </div>
+                <div class="skill-item" data-skill="TensorFlow">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M30 35 L50 20 L70 35 L70 65 L50 80 L30 65 Z" fill="currentColor" opacity="0.8"/><path d="M40 45 L50 38 L60 45 L60 60 L50 67 L40 60 Z" fill="currentColor"/></svg>
+                    </div>
+                    <span class="skill-name">TensorFlow</span>
+                </div>
+                <div class="skill-item" data-skill="Scikit-learn">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="35" cy="35" r="8" fill="currentColor"/><circle cx="65" cy="35" r="8" fill="currentColor"/><circle cx="50" cy="65" r="8" fill="currentColor"/></svg>
+                    </div>
+                    <span class="skill-name">Scikit-learn</span>
+                </div>
+                <div class="skill-item" data-skill="Pandas">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="30" width="50" height="40" fill="currentColor" opacity="0.7"/><rect x="30" y="35" width="15" height="30" fill="white"/><rect x="50" y="35" width="15" height="30" fill="white"/><line x1="25" y1="55" x2="75" y2="55" stroke="white" stroke-width="1.5"/></svg>
+                    </div>
+                    <span class="skill-name">Pandas</span>
+                </div>
+                <div class="skill-item" data-skill="NumPy">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M25 75 L50 25 L75 75 Z" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="50" cy="50" r="8" fill="currentColor"/></svg>
+                    </div>
+                    <span class="skill-name">NumPy</span>
+                </div>
+                <div class="skill-item" data-skill="Matplotlib">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="2"/><line x1="20" y1="20" x2="20" y2="80" stroke="currentColor" stroke-width="2"/><polyline points="30,65 40,45 50,55 60,35 70,40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <span class="skill-name">Matplotlib</span>
+                </div>
+                <div class="skill-item" data-skill="Seaborn">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="60" height="60" fill="currentColor" opacity="0.2" stroke="currentColor" stroke-width="2"/><rect x="30" y="35" width="8" height="30" fill="currentColor"/><rect x="45" y="25" width="8" height="40" fill="currentColor"/><rect x="60" y="45" width="8" height="20" fill="currentColor"/></svg>
+                    </div>
+                    <span class="skill-name">Seaborn</span>
+                </div>
+                <div class="skill-item" data-skill="OpenCV">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="25" width="50" height="50" fill="currentColor" opacity="0.3" stroke="currentColor" stroke-width="2"/><circle cx="35" cy="35" r="6" fill="currentColor"/><circle cx="50" cy="50" r="8" fill="currentColor"/><circle cx="65" cy="65" r="6" fill="currentColor"/></svg>
+                    </div>
+                    <span class="skill-name">OpenCV</span>
+                </div>
+                <div class="skill-item" data-skill="Keras">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 20 L80 50 L65 65 L50 75 L35 65 L20 50 Z" fill="currentColor" opacity="0.7"/><path d="M50 35 L70 50 L60 60 L50 65 L40 60 L30 50 Z" fill="white"/></svg>
+                    </div>
+                    <span class="skill-name">Keras</span>
                 </div>
             </div>
-
-            <!-- NLP / LLM Skills -->
-            <div class="skill-category p-8 fade-in" style="animation-delay: 0.3s; background-color: var(--surface); border: 2px solid rgba(163, 102, 255, 0.4); border-radius: 0px; position: relative;">
-                <div style="position: absolute; top: 8px; left: 8px; color: var(--neon-purple); font-weight: bold; font-size: 1.2rem;">&lt;</div>
-                <div style="position: absolute; top: 8px; right: 8px; color: var(--neon-purple); font-weight: bold; font-size: 1.2rem;">&gt;</div>
-                <h3 class="text-xl font-bold mb-4 flex items-center justify-center" style="color: var(--neon-purple); text-transform: uppercase; letter-spacing: 1px; font-family: 'Fira Code', monospace;">
-                    <i class="fas fa-comment-dots mr-3"></i> NLP / LLM
-                </h3>
-                <div>
-                    <span class="skill-tag">LangChain</span>
-                    <span class="skill-tag">LangGraph</span>
-                    <span class="skill-tag">Hugging Face</span>
-                    <span class="skill-tag">RAG</span>
-                    <span class="skill-tag">CrewAI</span>
-                    <span class="skill-tag">AutoGen</span>
-                    <span class="skill-tag">Agentic AI</span>
-                    <span class="skill-tag">Transformers</span>
-                </div>
-            </div>
-
-            <!-- Dev Tools Skills -->
-            <div class="skill-category p-8 fade-in" style="animation-delay: 0.4s; background-color: var(--surface); border: 2px solid rgba(0, 217, 255, 0.4); border-radius: 0px; position: relative;">
-                <div style="position: absolute; top: 8px; left: 8px; color: var(--neon-cyan); font-weight: bold; font-size: 1.2rem;">{'</div>
-                <div style="position: absolute; top: 8px; right: 8px; color: var(--neon-cyan); font-weight: bold; font-size: 1.2rem;">'}</div>
-                <h3 class="text-xl font-bold mb-4 flex items-center justify-center" style="color: var(--neon-cyan); text-transform: uppercase; letter-spacing: 1px; font-family: 'Fira Code', monospace;">
-                    <i class="fas fa-tools mr-3"></i> Dev Tools
-                </h3>
-                <div>
-                    <span class="skill-tag">FastAPI</span>
-                    <span class="skill-tag">Streamlit</span>
-                    <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">GitHub</span>
-                    <span class="skill-tag">Jupyter</span>
-                    <span class="skill-tag">GCP</span>
-                    <span class="skill-tag">AWS</span>
-                </div>
-            </div>
-
-            <!-- Vector Databases -->
-            <div class="skill-category p-8 fade-in" style="animation-delay: 0.5s; background-color: var(--surface); border: 2px solid rgba(255, 0, 110, 0.4); border-radius: 0px; position: relative;">
-                <div style="position: absolute; top: 8px; left: 8px; color: var(--neon-pink); font-weight: bold; font-size: 1.2rem;">/*</div>
-                <div style="position: absolute; top: 8px; right: 8px; color: var(--neon-pink); font-weight: bold; font-size: 1.2rem;">*/</div>
-                <h3 class="text-xl font-bold mb-4 flex items-center justify-center" style="color: var(--neon-pink); text-transform: uppercase; letter-spacing: 1px; font-family: 'Fira Code', monospace;">
-                    <i class="fas fa-database mr-3"></i> Vector DB
-                </h3>
-                <div>
-                    <span class="skill-tag">Milvus</span>
-                    <span class="skill-tag">FAISS</span>
-                    <span class="skill-tag">pgvector</span>
-                    <span class="skill-tag">Pinecone</span>
-                    <span class="skill-tag">Weaviate</span>
-                    <span class="skill-tag">Qdrant</span>
-                </div>
-            </div>
-
         </div>
+
+        <!-- NLP / LLM Skills Section -->
+        <div class="skill-section fade-in" style="animation-delay: 0.3s;">
+            <div class="skill-category-header">
+                <i class="fas fa-comments"></i>
+                <h3>NLP & Large Language Models</h3>
+                <span class="category-accent purple"></span>
+            </div>
+            <div class="skill-grid">
+                <div class="skill-item" data-skill="LangChain">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M30 50 L50 30 L70 50 L70 70 L50 90 L30 70 Z" fill="currentColor" opacity="0.7"/><circle cx="50" cy="50" r="12" fill="white"/></svg>
+                    </div>
+                    <span class="skill-name">LangChain</span>
+                </div>
+                <div class="skill-item" data-skill="LangGraph">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="35" cy="35" r="10" fill="currentColor"/><circle cx="65" cy="35" r="10" fill="currentColor"/><circle cx="50" cy="65" r="10" fill="currentColor"/><line x1="35" y1="35" x2="50" y2="65" stroke="currentColor" stroke-width="2"/><line x1="65" y1="35" x2="50" y2="65" stroke="currentColor" stroke-width="2"/><line x1="35" y1="35" x2="65" y2="35" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <span class="skill-name">LangGraph</span>
+                </div>
+                <div class="skill-item" data-skill="Hugging Face">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="32" fill="currentColor" opacity="0.8"/><circle cx="42" cy="42" r="5" fill="white"/><circle cx="58" cy="42" r="5" fill="white"/><path d="M40 55 Q50 62 60 55" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+                    </div>
+                    <span class="skill-name">Hugging Face</span>
+                </div>
+                <div class="skill-item" data-skill="RAG">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="30" width="30" height="40" fill="currentColor" opacity="0.6"/><circle cx="75" cy="50" r="15" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M65 50 L85 50" stroke="currentColor" stroke-width="2.5"/><line x1="50" y1="50" x2="60" y2="50" stroke="currentColor" stroke-width="2.5"/></svg>
+                    </div>
+                    <span class="skill-name">RAG</span>
+                </div>
+                <div class="skill-item" data-skill="CrewAI">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="35" cy="40" r="10" fill="currentColor"/><circle cx="65" cy="40" r="10" fill="currentColor"/><circle cx="50" cy="65" r="10" fill="currentColor"/><line x1="35" y1="40" x2="50" y2="65" stroke="currentColor" stroke-width="2"/><line x1="65" y1="40" x2="50" y2="65" stroke="currentColor" stroke-width="2"/><line x1="35" y1="40" x2="65" y2="40" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <span class="skill-name">CrewAI</span>
+                </div>
+                <div class="skill-item" data-skill="AutoGen">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="30" height="30" fill="currentColor" opacity="0.7" stroke="currentColor" stroke-width="1.5"/><rect x="55" y="20" width="25" height="30" fill="currentColor" opacity="0.7" stroke="currentColor" stroke-width="1.5"/><rect x="20" y="55" width="30" height="25" fill="currentColor" opacity="0.7" stroke="currentColor" stroke-width="1.5"/><rect x="55" y="55" width="25" height="25" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <span class="skill-name">AutoGen</span>
+                </div>
+                <div class="skill-item" data-skill="Agentic AI">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="35" r="12" fill="currentColor"/><rect x="35" y="55" width="30" height="25" rx="3" fill="currentColor" opacity="0.8"/><line x1="42" y1="60" x2="42" y2="75" stroke="white" stroke-width="1.5"/><line x1="50" y1="60" x2="50" y2="75" stroke="white" stroke-width="1.5"/><line x1="58" y1="60" x2="58" y2="75" stroke="white" stroke-width="1.5"/></svg>
+                    </div>
+                    <span class="skill-name">Agentic AI</span>
+                </div>
+                <div class="skill-item" data-skill="Transformers">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 20 L75 35 L75 65 L50 80 L25 65 L25 35 Z" fill="currentColor" opacity="0.6"/><path d="M50 35 L65 42 L65 58 L50 65 L35 58 L35 42 Z" fill="white"/></svg>
+                    </div>
+                    <span class="skill-name">Transformers</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dev Tools Skills Section -->
+        <div class="skill-section fade-in" style="animation-delay: 0.4s;">
+            <div class="skill-category-header">
+                <i class="fas fa-hammer"></i>
+                <h3>Development Tools & Platforms</h3>
+                <span class="category-accent cyan"></span>
+            </div>
+            <div class="skill-grid">
+                <div class="skill-item" data-skill="FastAPI">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M20 50 L35 30 L50 50 L35 70 Z" fill="currentColor"/><path d="M50 50 L65 30 L80 50 L65 70 Z" fill="currentColor" opacity="0.6"/></svg>
+                    </div>
+                    <span class="skill-name">FastAPI</span>
+                </div>
+                <div class="skill-item" data-skill="Streamlit">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M30 30 L50 20 L50 50 Z" fill="currentColor"/><path d="M50 50 L70 40 L70 70 Z" fill="currentColor" opacity="0.8"/><path d="M30 70 L50 50 L50 80 Z" fill="currentColor" opacity="0.6"/></svg>
+                    </div>
+                    <span class="skill-name">Streamlit</span>
+                </div>
+                <div class="skill-item" data-skill="Docker">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="35" width="15" height="15" fill="currentColor"/><rect x="48" y="35" width="15" height="15" fill="currentColor" opacity="0.8"/><rect x="25" y="55" width="15" height="15" fill="currentColor" opacity="0.6"/><rect x="48" y="55" width="15" height="15" fill="currentColor" opacity="0.4"/><circle cx="62" cy="62" r="4" fill="currentColor"/></svg>
+                    </div>
+                    <span class="skill-name">Docker</span>
+                </div>
+                <div class="skill-item" data-skill="GitHub">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 20 C32 20 20 32 20 50 C20 68 32 80 50 80 C68 80 80 68 80 50 C80 32 68 20 50 20 M50 28 C64 28 72 36 72 50 C72 62 64 72 50 72 C36 72 28 62 28 50 C28 36 36 28 50 28" fill="currentColor"/></svg>
+                    </div>
+                    <span class="skill-name">GitHub</span>
+                </div>
+                <div class="skill-item" data-skill="Jupyter">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="35" cy="35" r="12" fill="currentColor" opacity="0.9"/><circle cx="65" cy="35" r="12" fill="currentColor" opacity="0.7"/><circle cx="50" cy="65" r="12" fill="currentColor" opacity="0.5"/><circle cx="50" cy="50" r="4" fill="white"/></svg>
+                    </div>
+                    <span class="skill-name">Jupyter</span>
+                </div>
+                <div class="skill-item" data-skill="GCP">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 25 A25 25 0 0 1 75 50" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M75 50 A25 25 0 0 1 50 75" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/><path d="M50 75 A25 25 0 0 1 25 50" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/><circle cx="50" cy="50" r="6" fill="currentColor"/></svg>
+                    </div>
+                    <span class="skill-name">GCP</span>
+                </div>
+                <div class="skill-item" data-skill="AWS">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M30 55 Q30 40 45 40 Q55 30 70 40 Q70 55 55 60 L40 60 Q30 60 30 55" fill="currentColor" opacity="0.7"/><path d="M35 65 Q35 55 50 55 Q60 48 75 55 Q75 68 60 72 L45 72 Q35 72 35 65" fill="currentColor" opacity="0.5"/></svg>
+                    </div>
+                    <span class="skill-name">AWS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vector Databases Section -->
+        <div class="skill-section fade-in" style="animation-delay: 0.5s;">
+            <div class="skill-category-header">
+                <i class="fas fa-database"></i>
+                <h3>Vector Databases & Storage</h3>
+                <span class="category-accent pink"></span>
+            </div>
+            <div class="skill-grid">
+                <div class="skill-item" data-skill="Milvus">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="60" height="60" rx="8" fill="currentColor" opacity="0.8"/><path d="M35 50 L50 35 L65 50 L65 65 L50 75 L35 65 Z" fill="white" opacity="0.9"/></svg>
+                    </div>
+                    <span class="skill-name">Milvus</span>
+                </div>
+                <div class="skill-item" data-skill="FAISS">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="28" fill="currentColor" opacity="0.7"/><circle cx="50" cy="50" r="20" fill="white" opacity="0.3"/><circle cx="50" cy="50" r="8" fill="currentColor"/><path d="M50 30 L60 45 L55 50 L65 60 L50 70 L35 60 L45 50 L40 45 Z" fill="white" opacity="0.8"/></svg>
+                    </div>
+                    <span class="skill-name">FAISS</span>
+                </div>
+                <div class="skill-item" data-skill="pgvector">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="28" fill="currentColor" opacity="0.8"/><path d="M35 40 Q35 30 50 25 Q65 30 65 40 L65 60 Q65 70 50 75 Q35 70 35 60 Z" fill="white" opacity="0.7"/><line x1="40" y1="45" x2="60" y2="45" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="55" x2="60" y2="55" stroke="currentColor" stroke-width="1.5"/></svg>
+                    </div>
+                    <span class="skill-name">pgvector</span>
+                </div>
+                <div class="skill-item" data-skill="Pinecone">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 20 L75 35 L75 65 L50 80 L25 65 L25 35 Z" fill="currentColor" opacity="0.8"/><path d="M50 35 L65 42 L65 58 L50 65 L35 58 L35 42 Z" fill="white" opacity="0.8"/></svg>
+                    </div>
+                    <span class="skill-name">Pinecone</span>
+                </div>
+                <div class="skill-item" data-skill="Weaviate">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 25 L65 40 L65 70 L50 85 L35 70 L35 40 Z" fill="currentColor" opacity="0.7"/><path d="M50 40 L60 48 L60 62 L50 70 L40 62 L40 48 Z" fill="white" opacity="0.8"/><circle cx="50" cy="55" r="3" fill="currentColor"/></svg>
+                    </div>
+                    <span class="skill-name">Weaviate</span>
+                </div>
+                <div class="skill-item" data-skill="Qdrant">
+                    <div class="skill-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="25" fill="currentColor" opacity="0.7"/><path d="M40 40 L50 30 L60 40 L60 60 L50 70 L40 60 Z" fill="white" opacity="0.9"/><circle cx="50" cy="50" r="5" fill="currentColor"/></svg>
+                    </div>
+                    <span class="skill-name">Qdrant</span>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-50">
+    <section id="contact" class="py-16 bg-surface">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center fade-in">Let's Collaborate</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center fade-in" style="color: var(--neon-cyan);">Let's Collaborate</h2>
             
-            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden fade-in" style="animation-delay: 0.2s;">
+            <div class="max-w-4xl mx-auto rounded-lg overflow-hidden fade-in" style="animation-delay: 0.2s; background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.3);">
                 <div class="md:flex contact-section-container">
-                    <div class="contact-info-side p-8 bg-gradient-to-br from-primary-color to-indigo-700 text-white md:w-1/2">
+                    <div class="contact-info-side p-8 text-white md:w-1/2" style="background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(163, 102, 255, 0.1)); border-right: 1px solid rgba(0, 217, 255, 0.2);">
                         <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
                         <p class="mb-8">
                             I'm open to research internships, industry projects, academic partnerships, and feedback 
@@ -498,23 +645,23 @@
                     </div>
                     
                     <div class="md:w-1/2 p-8 contact-form-side">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-800">Send a Message</h3>
+                        <h3 class="text-2xl font-bold mb-6" style="color: var(--neon-cyan);">Send a Message</h3>
                         <form class="space-y-4" action="https://formspree.io/f/xgvklzjq" method="POST">
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-transparent">
+                                <label for="name" class="block text-sm font-medium mb-1" style="color: var(--neon-cyan);">Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 transition-all" style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.3); color: var(--neon-cyan);">
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-transparent">
+                                <label for="email" class="block text-sm font-medium mb-1" style="color: var(--neon-cyan);">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 transition-all" style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.3); color: var(--neon-cyan);">
                             </div>
                             <div>
-                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-                                <input type="text" id="subject" name="subject" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-transparent">
+                                <label for="subject" class="block text-sm font-medium mb-1" style="color: var(--neon-cyan);">Subject</label>
+                                <input type="text" id="subject" name="subject" required class="w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 transition-all" style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.3); color: var(--neon-cyan);">
                             </div>
                             <div>
-                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-transparent"></textarea>
+                                <label for="message" class="block text-sm font-medium mb-1" style="color: var(--neon-cyan);">Message</label>
+                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 transition-all" style="background: rgba(0, 217, 255, 0.05); border: 1px solid rgba(0, 217, 255, 0.3); color: var(--neon-cyan);"></textarea>
                             </div>
                             <div>
                                 <button type="submit" class="primary-btn w-full">Send Message</button>
