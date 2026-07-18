@@ -6,7 +6,14 @@ const mobileMenu = document.getElementById('mobileMenu');
 
 if (menuToggle && mobileMenu) {
     menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+        const expanded = mobileMenu.classList.toggle('hidden');
+        menuToggle.setAttribute('aria-expanded', !expanded);
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        });
     });
 }
 
@@ -503,15 +510,46 @@ const chatInput = document.getElementById('chat-input');
 const chatMessages = document.getElementById('chat-messages');
 
 let chatHistory = [];
+let greetingFetched = false;
 
 const toggleChat = () => {
+    const isOpen = !chatPopup.classList.contains('hidden');
     chatPopup.classList.toggle('hidden');
+    chatBubble.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    if (!chatPopup.classList.contains('hidden') && !greetingFetched) {
+        greetingFetched = true;
+        fetchGreeting();
+    }
+    if (!chatPopup.classList.contains('hidden')) {
+        chatInput?.focus();
+    }
 };
 
 if (chatBubble && chatPopup && closeChat) {
     chatBubble.addEventListener('click', toggleChat);
+    chatBubble.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleChat();
+        }
+    });
     closeChat.addEventListener('click', toggleChat);
 }
+
+const fetchGreeting = async () => {
+    try {
+        const response = await fetch('/chat/greeting');
+        if (response.ok) {
+            const data = await response.json();
+            const greetingEl = document.getElementById('chat-greeting');
+            if (greetingEl) {
+                addMessage('bot', data.greeting, true);
+            }
+        }
+    } catch (e) {
+        console.error('Failed to fetch greeting:', e);
+    }
+};
 
 const addMessage = (sender, message, useTypingEffect = false) => {
     if (sender === 'user') {
@@ -766,3 +804,6 @@ if (document.readyState === 'loading') {
 } else {
     createRainEffect();
 }
+
+// Dynamic copyright year
+document.getElementById('currentYear').textContent = new Date().getFullYear();

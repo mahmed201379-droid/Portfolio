@@ -1,32 +1,121 @@
-Academic & Research Background: 
-Education: Recent Computer Science graduate.
-Research Focus: Deep learning, machine learning, multimodal medical image analysis, digital image processing, and time series analysis.
-Publications: Four conference papers published; currently preparing a Q1 journal submission (Universal Attention Mechanism for Multi-Modal Medical Image Classification).
-Capstone Project: Advanced Deep Learning Techniques for Classifying and Assessing the Severity of Lung Diseases using X-ray Images.
-Other Work: Adaptive Fault Reduction Algorithm (AFRA) paper achieving 99.89% fault reduction using ML for electrical systems.
-Career & Professional Status: 
-Current Role: AI Engineer at Ethics Advance Technology Ltd (Dhaka, Bangladesh).
-Responsibilities: Applying AI/ML techniques to real-world industry problems, bridging research with deployable systems.
-Career Direction: Combining applied AI engineering with academic research to build strong expertise in both domains.
-Future Goals
-Short-Term (2025–2026):
-Join a research-based master’s program in Australia (Jan 2026 intake); backup options include Belgium, Poland, or Denmark.
-Focus research on LLMs and Retrieval-Augmented Generation (RAG), moving beyond medical imaging.
-Mid-Term (2026–2027):
-Pursue impactful research during master’s, aiming for Q1 journal publications and conference presentations.
-Secure a research internship at a Big Tech company (FAANG-level) in Europe or Australia.
-Long-Term (2030 goal):
-Found a product-based AI startup with premium subscription services.
-Achieve financial independence (millionaire status) through a blend of research, industry, and entrepreneurship.
+Academic & Research Background:
+Education: Recent Computer Science and Engineering graduate from United International University.
+
+Research Focus: Deep learning, machine learning, medical image analysis, explainable AI, trustworthy AI, computer vision, multimodal learning, large language models, Retrieval-Augmented Generation, and time-series analysis.
+
+Publications: Four conference papers published, along with a research-related book chapter. Currently working on one ongoing Q1 journal manuscript and another submitted Q1 journal manuscript.
+
+Ongoing Q1 Journal: Curriculum-Guided Spatial Attention Resolves Multi-Annotator Label Ambiguity in Thoracic Disease Screening.
+
+Proposed BS-Net, a clinically grounded multi-label chest radiograph classification architecture based on DenseNet-121 and a custom Bottleneck Spatial Attention Module. The model uses supervised spatial attention with clinically validated bounding-box priors to reduce shortcut learning and improve interpretability.
+
+BS-Net combines binary cross-entropy classification loss with soft Dice attention-supervision loss through a dual-objective optimization strategy. On a diverse test set of 3,000 chest X-ray images, the model achieved a Macro-Average AUC of 0.9607, Mean Average Precision of 0.6506, Pointing Game Accuracy of 84.87%, and Mean IoU of 0.4941.
+
+The study demonstrated that unconstrained attention slightly reduced baseline performance, while clinically supervised attention improved classification and localization, including approximately 1.5% AUC improvements for Fibrosis and Calcification. Robustness testing with synthetic out-of-distribution artifacts produced a low false-positive rate of 0.0156, demonstrating resistance to shortcut features such as text markers and hospital tokens.
+
+Submitted Q1 Journal: Gradient-Decoupled Dual-Stream Isolation: A Lightweight MobileNetV3 Framework for Robust Melanoma Detection on Edge Devices.
+
+Developed a lightweight dual-stream MobileNetV3 framework with approximately 2 million parameters for melanoma detection. The model processes global lesion shape at 224×224 resolution and local texture information at 128×128 resolution.
+
+Introduced Gradient-Decoupled Modality Isolation, a training strategy that trains the global and local streams independently before combining their predictions through inference-time ensemble fusion. This approach reduces modality collapse without introducing additional architectural complexity.
+
+Evaluated using patient-level five-fold cross-validation on the highly imbalanced ISIC 2020 dataset, the framework achieved a mean AUC-ROC of 0.8975 ± 0.0150 compared with 0.8872 for the joint-training baseline. It also achieved a Partial AUC of 0.9850 in the high-sensitivity screening region, accuracy of 90.2%, and specificity of 90.6%, while reducing false-positive predictions.
+
+Capstone Project: Advanced Deep Learning Techniques for Classifying and Assessing the Severity of Lung Diseases using Chest X-ray Images.
+
+Other Research Work: Adaptive Fault Reduction Algorithm research using machine learning for electrical fault detection, achieving approximately 99.79% classification accuracy.
+
+Additional research experience includes brain tumour classification using channel attention, elderly movement-intensity prediction using environmental sensor data, medical image explainability, retinal vessel segmentation, and ride-sharing trend analysis.
+
+Career & Professional Status:
+Current Role: AI Engineer at Ethics Advance Technology Limited, Dhaka, Bangladesh.
+
+Responsibilities: Designing, developing, and integrating AI-powered systems for real-world educational and institutional applications. Responsibilities include LLM and RAG development, computer vision, AI system architecture, FastAPI backend integration, database design, asynchronous job processing, GPU workload management, and production deployment.
+
+Career Direction: Combining applied AI engineering with academic research to build expertise in trustworthy AI, medical imaging, educational AI, LLM systems, and production-ready machine learning applications.
+
+Current Major Professional Project: AI-Powered Medical Learning Management System.
+
+The AI-LMS is a comprehensive institutional educational platform designed primarily for medical education. It combines learning management, AI-generated educational content, automated assessment, online examination, viva, presentation generation, personalized learning, and academic analytics.
+
+Core AI-LMS Features:
+
+AI Question Generation: Generates MCQ, descriptive, adaptive, short-answer, structured essay, and clinical scenario-based questions from uploaded academic materials.
+
+AI Viva System: Conducts interactive text and voice-based viva examinations, generates follow-up questions, evaluates answers, and produces performance summaries.
+
+AI Presentation Generation: Creates structured educational presentations from academic documents using background processing and dedicated GPU job queues.
+
+AI Evaluation: Evaluates student answers using configurable rubrics and generates scores, feedback, strengths, weaknesses, and improvement recommendations.
+
+Personalized Learning Paths: Recommends chapters, topics, learning materials, practice questions, and difficulty levels based on student performance.
+
+Hybrid Retrieval System: Uses BM25 keyword search, dense semantic retrieval, PostgreSQL, PGVector, metadata filtering, semantic chunking, and context ranking.
+
+Online Examination: Supports large student cohorts, structured examinations, question management, student submissions, performance tracking, and administrative controls.
+
+AI Usage Management: Tracks token consumption, model usage, processing costs, and available institutional AI balances.
+
+Production Architecture: Uses FastAPI, Next.js, PostgreSQL, SQLAlchemy, Redis, WebSockets, background workers, distributed locks, dedicated GPU queues, and asynchronous processing.
+
 Technical & Project Experience:
-Built RAG-based multimodal PDF chatbot and simple LLM apps.
-Developed LangChain-based academic Q&A system with features like structured chapter parsing, difficulty levels, chat memory, and testing.
-Created ReadEasy News Adapter to adapt news content for different reading levels.
-Strong hands-on expertise in PyTorch, LLMs, NLP systems, and medical image analysis pipelines.
-Personal Traits & Vision: 
-Dual-track mindset: Pursuing both cutting-edge academic research and real-world industry applications.
-Adaptability: Transitioning research focus from medical imaging to LLM/RAG-based AI systems.
-Entrepreneurial Drive: Clear roadmap to move from AI research → industry expertise → startup founder.
-Vision: To become a globally recognized AI researcher and entrepreneur, creating tools that bridge academia, industry, and society.
 
+OpenCode Engineering Skills: Created and maintain an open-source engineering skill package for AI coding agents. The package provides reusable, role-specific engineering instructions for Python development, FastAPI, Next.js, UI/UX design, SQLAlchemy, PostgreSQL, testing, debugging, security review, code review, production readiness, AI system architecture, and general system architecture.
 
+The project includes skill validation, installation utilities, cross-platform setup, prompt optimization, context reduction, and token-saving workflows. Its objective is to make AI-assisted software engineering more consistent, architecture-aware, secure, and efficient.
+
+Cheating Risk Analysis: Developed a Python-based cheating-risk analysis service using computer vision and AI-powered behavioral assessment.
+
+The system supports real-time webcam and video analysis using MediaPipe and YOLOv8, suspicious-behavior detection, AI-powered risk assessment, cheating-probability scoring, activity timelines, and automated summaries.
+
+The production architecture includes FastAPI, asynchronous SQLAlchemy, PostgreSQL, Redis, Celery background workers, Prometheus monitoring, AWS S3 integration, OpenAI-based analysis, caching, and scalable worker processing.
+
+AI Research Academy: Developed an educational platform for artificial intelligence and machine learning research using Next.js.
+
+The platform provides structured learning tracks in computer vision and deep learning, interactive educational content, research-focused documentation, and organized learning resources for students and aspiring AI researchers.
+
+Face Detector — Real-Time Three-Person Desktop Alert: Developed a local face-recognition and monitoring system for a fixed webcam.
+
+The system enrolls three specific individuals, detects and recognizes them in real time, and sends desktop popup notifications when one of the enrolled people appears. It is designed for lightweight, local, and privacy-conscious execution.
+
+Resume-Optimizer-AI: Developed an AI-powered resume optimization application.
+
+Users can upload a resume and provide a target job description. The system analyzes the resume against the job requirements and generates suggestions for improving relevance, structure, wording, skills alignment, and applicant-tracking-system compatibility.
+
+Strong hands-on expertise in PyTorch, FastAPI, Next.js, PostgreSQL, SQLAlchemy, PGVector, Redis, Celery, computer vision, LLM applications, RAG systems, medical image analysis, multimodal learning, AI infrastructure, and production debugging.
+
+Future Goals:
+Short-Term:
+
+Strengthen academic and professional research profiles through Q1 journal publications, production-grade AI systems, open-source contributions, and international research collaboration.
+
+Prepare for PTE and apply for research-based master’s or MPhil opportunities, primarily in Australia, while considering suitable alternatives in Europe and Asia.
+
+Continue developing expertise in medical image analysis, trustworthy AI, explainable AI, LLMs, RAG, and production-oriented AI engineering.
+
+Mid-Term:
+
+Pursue impactful research during a research-based master’s or MPhil program.
+
+Publish additional Q1 journal papers and present research at internationally recognized conferences.
+
+Gain advanced research and industry experience through research assistantships, collaborations, or internships in strong AI research environments.
+
+Long-Term:
+
+Become an internationally recognized AI researcher and engineer with expertise in both scientific research and deployable AI systems.
+
+Build a product-based AI company offering premium AI-powered solutions for education, healthcare, research, and emerging markets.
+
+Achieve financial independence through a combination of AI research, software products, entrepreneurship, and industry experience.
+
+Personal Traits & Vision:
+Dual-Track Mindset: Pursuing both academically rigorous AI research and real-world production engineering.
+
+Research-to-Product Approach: Interested in transforming research concepts into usable, scalable, and maintainable AI applications.
+
+Adaptability: Expanding from medical image analysis into trustworthy AI, explainable AI, LLMs, Retrieval-Augmented Generation, AI infrastructure, and educational technology.
+
+Entrepreneurial Drive: Building technical, research, product-development, and open-source experience as preparation for creating an AI-focused technology company.
+
+Vision: To become a globally recognized AI researcher, engineer, and entrepreneur who develops trustworthy AI systems that bridge academia, industry, healthcare, education, and society.

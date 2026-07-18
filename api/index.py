@@ -1,11 +1,13 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from dotenv import load_dotenv
-from openai import OpenAI
+from openai import OpenAI, APIStatusError, APITimeoutError, RateLimitError
 import json
 import os
 import requests
+import time
 from pypdf import PdfReader
 from typing import List
 
@@ -14,27 +16,30 @@ from typing import List
 load_dotenv(override=True)
 
 def push(text):
-    # This function will run on your server. Ensure it's configured correctly.
     try:
-        requests.post(
+        resp = requests.post(
             "https://api.pushover.net/1/messages.json",
             data={
                 "token": os.getenv("PUSHOVER_TOKEN"),
                 "user": os.getenv("PUSHOVER_USER"),
                 "message": text,
-            }
+            },
+            timeout=10,
         )
+        resp.raise_for_status()
+        return True
     except Exception as e:
         print(f"Pushover notification failed: {e}")
+        return False
 
 
 def record_user_details(email, name="Name not provided", notes="not provided"):
-    push(f"Recording {name} with email {email} and notes {notes}")
-    return {"recorded": "ok"}
+    ok = push(f"Recording {name} with email {email} and notes {notes}")
+    return {"recorded": "ok" if ok else "failed"}
 
 def record_unknown_question(question):
-    push(f"Recording {question}")
-    return {"recorded": "ok"}
+    ok = push(f"Recording {question}")
+    return {"recorded": "ok" if ok else "failed"}
 
 record_user_details_json = {
     "name": "record_user_details",
@@ -68,10 +73,13 @@ tools = [{"type": "function", "function": record_user_details_json},
         {"type": "function", "function": record_unknown_question_json}]
 
 
+MAX_HISTORY_TURNS = 20
+
 class Me:
     def __init__(self):
         self.openai = OpenAI()
         self.name = "Md Sayem Ahamed"
+        self.model = os.getenv("OPENAI_MODEL", "gpt-4.1-mini")
 
         # Construct absolute paths to data files relative to this script's location
         script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -110,27 +118,48 @@ class Me:
         return system_prompt
     
     def chat(self, message, history):
-        messages = [{"role": "system", "content": self.system_prompt()}] + history + [{"role": "user", "content": message}]
+        # Prune history to last MAX_HISTORY_TURNS turns (assistant+user pairs)
+        pruned = history[-(MAX_HISTORY_TURNS * 2):] if len(history) > MAX_HISTORY_TURNS * 2 else history
+        messages = [{"role": "system", "content": self.system_prompt()}] + pruned + [{"role": "user", "content": message}]
         done = False
         while not done:
-            response = self.openai.chat.completions.create(model="gpt-4.1-mini", messages=messages, tools=tools)
+            response = self.openai.chat.completions.create(model=self.model, messages=messages, tools=tools)
             if response.choices[0].finish_reason=="tool_calls":
-                message = response.choices[0].message
-                tool_calls = message.tool_calls
+                msg = response.choices[0].message
+                tool_calls = msg.tool_calls
                 results = self.handle_tool_call(tool_calls)
-                messages.append(message)
+                messages.append(msg)
                 messages.extend(results)
             else:
                 done = True
         return response.choices[0].message.content
 
+# --- Rate Limiter ---
+class RateLimiter:
+    def __init__(self, requests_per_minute=10):
+        self.requests_per_minute = requests_per_minute
+        self.clients = {}
+
+    def check(self, client_ip: str) -> bool:
+        now = time.time()
+        window = 60
+        if client_ip not in self.clients:
+            self.clients[client_ip] = []
+        self.clients[client_ip] = [t for t in self.clients[client_ip] if now - t < window]
+        if len(self.clients[client_ip]) >= self.requests_per_minute:
+            return False
+        self.clients[client_ip].append(now)
+        return True
+
+rate_limiter = RateLimiter()
+
 # --- FastAPI Server Setup ---
 app = FastAPI()
 
-# CORS Middleware to allow requests from the frontend (running on a different port)
+# CORS Middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For development. In production, restrict this to your frontend's domain.
+    allow_origins=["https://portfolio-xdk9.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -157,19 +186,40 @@ def root():
 
 
 @app.post("/chat")
-async def chat_endpoint(chat_request: ChatRequest):
+async def chat_endpoint(chat_request: ChatRequest, request: Request):
+    client_ip = request.client.host if request.client else "unknown"
+    if not rate_limiter.check(client_ip):
+        raise HTTPException(status_code=429, detail="Rate limit exceeded. Please wait before sending another message.")
     if not me_assistant:
-        raise HTTPException(status_code=500, detail="Assistant is not available.")
+        raise HTTPException(status_code=503, detail="Chat service is not available. Please try again later.")
 
-    # Convert Pydantic models to a list of dictionaries for the 'chat' method
     history_dicts = [message.model_dump() for message in chat_request.history]
 
     try:
         bot_response = me_assistant.chat(chat_request.message, history_dicts)
         return {"response": bot_response}
+    except RateLimitError:
+        print("OpenAI rate limit hit", flush=True)
+        raise HTTPException(status_code=503, detail="AI service is temporarily overloaded. Please try again shortly.")
+    except APITimeoutError:
+        print("OpenAI request timed out", flush=True)
+        raise HTTPException(status_code=504, detail="AI service timed out. Please try again.")
+    except APIStatusError as e:
+        print(f"OpenAI API error: {e}", flush=True)
+        status_code = 503 if e.status_code in (429, 502, 503) else 500
+        raise HTTPException(status_code=status_code, detail="AI service returned an error. Please try again later.")
     except Exception as e:
-        print(f"Error during chat processing: {e}")
+        print(f"Unexpected error during chat processing: {e}", flush=True)
+        raise HTTPException(status_code=500, detail="An unexpected error occurred. Please try again.")
 
-        raise HTTPException(status_code=500, detail="An error occurred while processing your message.")
+
+@app.get("/chat/greeting")
+def chat_greeting():
+    if not me_assistant:
+        return JSONResponse({"greeting": "Hello! I'm ByteBuddy, Sayem's AI assistant. Ask me anything about skills, projects, or experience."})
+    role = me_assistant.name.split()[-1] if " " in me_assistant.name else "assistant"
+    return {
+        "greeting": f"Hello! I'm **ByteBuddy**, {me_assistant.name}'s personal AI {role}. Ask me anything about skills, projects, or experience — I'm here to help!"
+    }
 
 
