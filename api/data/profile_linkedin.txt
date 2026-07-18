@@ -1,0 +1,45 @@
+Contact
++8801540401303 (Mobile)
+sayem7456@gmail.com
+www.linkedin.com/in/md-sayem-
+ahamed (LinkedIn)
+sayem7456.github.io/Portfolio/
+(Portfolio)
+Top Skills
+Retrieval-Augmented Generation
+(RAG)
+AI Agents
+Image Analysis
+Publications
+Prediction of the intensity of physical
+movement of aged people
+Md Sayem Ahamed
+AI Researcher | Deep Learning & LLM | Medical Imaging | Building
+Real-World AI Tools |
+Dhaka, Dhaka, Bangladesh
+Summary
+As a recent Computer Science graduate specializing in data science
+and software engineering, I build machine learning solutions that
+tackle real-world healthcare challenges. My work spans predictive
+modeling, medical image analysis, and sensor data applications
+—using tools like Python, TensorFlow, Keras, and scikit-learn to
+design, optimize, and deploy models.
+I’ve developed deep learning systems for medical imaging (applying
+CNNs to improve diagnostics) and engineered ML algorithms
+to extract insights from sensor data. Proficient in C/C++ for
+performance-critical tasks, I thrive at the intersection of scalable
+code and data science.
+Passionate about using technology to drive healthcare
+breakthroughs, I’m eager to collaborate on projects where machine
+learning meets meaningful impact. Let’s connect and explore how to
+turn data into solutions!
+Experience
+Ethics Advance Technology Limited.
+AI Engineer
+August 2025 - Present (2 months)
+Dhaka, Bangladesh
+Education
+United International University
+ · (2020 - 2024)
+ 
+Page 1 of 1

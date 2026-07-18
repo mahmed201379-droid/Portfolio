@@ -1,9 +1,0 @@
-fastapi
-uvicorn
-python-dotenv
-openai
-pypdf
-requests
-pydantic
-pytest
-httpx

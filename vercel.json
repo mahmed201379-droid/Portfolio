@@ -6,16 +6,15 @@
       "use": "@vercel/static"
     },
     {
-      "src": "api/index.py",
-      "use": "@vercel/python",
+      "src": "api/chat.js",
+      "use": "@vercel/node",
       "config": {
         "includeFiles": "api/data/**"
       }
     }
   ],
   "routes": [
-    { "src": "/chat", "dest": "api/index.py" },
-    { "src": "/api/(.*)", "dest": "api/index.py" },
+    { "src": "/api/chat", "dest": "api/chat.js" },
     { "src": "/(.*)", "dest": "/public/$1" }
   ]
 }
