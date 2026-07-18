@@ -38,19 +38,25 @@ async function generateWithGroq({ model, systemPrompt, message, history, timeout
   const timer = setTimeout(() => controller.abort(), timeout);
 
   try {
+    const body = {
+      model,
+      messages,
+      max_tokens: MAX_RESPONSE_TOKENS,
+      temperature: 0.7,
+    };
+
+    // Only Qwen supports the 'reasoning' parameter
+    if (model.startsWith('qwen/')) {
+      body.reasoning = false;
+    }
+
     const response = await fetch(GROQ_API_BASE, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        model,
-        messages,
-        max_tokens: MAX_RESPONSE_TOKENS,
-        temperature: 0.7,
-        reasoning: false,
-      }),
+      body: JSON.stringify(body),
       signal: controller.signal,
     });
 
