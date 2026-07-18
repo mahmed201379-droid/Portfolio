@@ -49,6 +49,7 @@ async function generateWithGroq({ model, systemPrompt, message, history, timeout
         messages,
         max_tokens: MAX_RESPONSE_TOKENS,
         temperature: 0.7,
+        reasoning: false,
       }),
       signal: controller.signal,
     });
