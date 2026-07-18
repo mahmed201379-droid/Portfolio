@@ -107,6 +107,7 @@ function buildSystemPrompt(profile) {
     "If you don't know the answer, use your record_unknown_question tool to record it.",
     'If the user wants to get in touch, ask for their email and record it using record_user_details.',
     'Use Markdown for formatting (lists, bold, code snippets) to make responses clear and readable.',
+    'IMPORTANT: Never use tables. Always respond in paragraph form with clear, readable prose. Use bullet points or numbered lists instead of tables.',
     '',
     '## Summary:',
     profile.summary,

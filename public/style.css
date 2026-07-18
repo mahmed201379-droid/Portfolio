@@ -919,8 +919,9 @@ footer .copyright {
 #chat-popup {
   position: fixed;
   bottom: 88px;
-  right: 24px;
-  width: min(22rem, calc(100vw - 2rem));
+  left: 16px;
+  right: 16px;
+  width: auto;
   max-width: 22rem;
   height: 60vh;
   max-height: 500px;
@@ -1167,6 +1168,38 @@ footer .copyright {
   font-family: 'Fira Code', monospace;
 }
 
+/* Markdown table scrolling in chat */
+.chat-bubble.bot table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8em;
+  margin: 8px 0;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.chat-bubble.bot th,
+.chat-bubble.bot td {
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  text-align: left;
+}
+
+.chat-bubble.bot th {
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.chat-bubble.bot td {
+  color: var(--text-secondary);
+}
+
+.chat-bubble.bot tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
 .chat-bubble.user p {
   color: var(--text-primary);
   margin: 0;
@@ -1274,10 +1307,11 @@ footer .copyright {
   .project-card { padding: 20px; }
 
   #chat-popup {
-    right: 12px;
-    width: calc(100vw - 24px);
-    max-width: calc(100vw - 24px);
-    height: 55vh;
+    left: 8px;
+    right: 8px;
+    max-width: none;
+    height: 65vh;
+    max-height: 500px;
   }
 }
 
@@ -1288,6 +1322,13 @@ footer .copyright {
   .project-card h3 { font-size: 1rem; }
   .publication-item h3 { font-size: 0.92rem; }
   .chat-bubble { max-width: 90%; }
+  
+  #chat-bubble {
+    bottom: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+  }
 }
 
 /* ========== Reduced Motion ========== */
