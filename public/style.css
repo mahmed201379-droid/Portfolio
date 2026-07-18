@@ -919,10 +919,9 @@ footer .copyright {
 #chat-popup {
   position: fixed;
   bottom: 88px;
-  left: 16px;
   right: 16px;
-  width: auto;
-  max-width: 22rem;
+  width: 22rem;
+  max-width: calc(100vw - 32px);
   height: 60vh;
   max-height: 500px;
   background: var(--bg-primary);
@@ -1309,6 +1308,7 @@ footer .copyright {
   #chat-popup {
     left: 8px;
     right: 8px;
+    width: auto;
     max-width: none;
     height: 65vh;
     max-height: 500px;
