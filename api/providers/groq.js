@@ -2,6 +2,16 @@ const GROQ_API_BASE = 'https://api.groq.com/openai/v1/chat/completions';
 const DEFAULT_TIMEOUT_MS = 60000;
 const MAX_RESPONSE_TOKENS = 500;
 
+function stripThinking(content) {
+  if (!content) return content;
+  return content
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/<think>[\s\S]*?<\/think>/gi, '')
+    .replace(/<<SYS>>[\s\S]*?<</g, '')
+    .replace(/^.*?<\/think>\s*/, '')
+    .trim();
+}
+
 function buildGroqMessages(systemPrompt, history, message) {
   const messages = [{ role: 'system', content: systemPrompt }];
   if (Array.isArray(history)) {
@@ -76,10 +86,11 @@ async function generateWithGroq({ model, systemPrompt, message, history, timeout
       return { content: null, status: 200, error: 'Groq response choice does not contain valid message content' };
     }
 
-    const content = choice.message.content.trim();
+    const rawContent = choice.message.content.trim();
+    const content = stripThinking(rawContent);
     if (content.length === 0) {
-      console.log(`Groq empty completion (${model})`);
-      return { content: null, status: 200, error: 'Groq response choice has empty message content' };
+      console.log(`Groq empty completion after strip (${model})`);
+      return { content: null, status: 200, error: 'Groq response choice has empty message content after strip' };
     }
 
     return { content, status: 200, error: null };
