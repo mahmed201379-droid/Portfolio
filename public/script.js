@@ -98,6 +98,7 @@ const sendBtn = chatForm?.querySelector('button[type="submit"]');
 let chatHistory = [];
 let isRequestActive = false;
 let requestController = null;
+let lastFocusedElement = null;
 
 const GREETING_MESSAGE = "Hello! I'm **ByteBuddy**, Md Sayem Ahamed's personal AI assistant. Ask me anything about his skills, projects, or experience — I'm here to help!";
 const PLACEHOLDER_TEXT = "Ask about Sayem's research, projects or experience.";
@@ -229,26 +230,93 @@ function showTypingIndicator() {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-const toggleChat = () => {
-  const isOpen = chatPopup.classList.contains('open');
-  chatPopup.classList.toggle('open');
-  chatBubble.setAttribute('aria-expanded', !isOpen);
-  if (!isOpen && chatMessages.children.length === 0) {
+function trapFocus(element) {
+  const focusableElements = element.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  const firstElement = focusableElements[0];
+  const lastElement = focusableElements[focusableElements.length - 1];
+
+  function handleTab(e) {
+    if (e.key !== 'Tab') return;
+
+    if (e.shiftKey) {
+      if (document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      }
+    } else {
+      if (document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
+      }
+    }
+  }
+
+  element.addEventListener('keydown', handleTab);
+  return () => element.removeEventListener('keydown', handleTab);
+}
+
+function openChat() {
+  if (chatPopup.classList.contains('open')) return;
+
+  lastFocusedElement = document.activeElement;
+  chatPopup.classList.add('open');
+  chatBubble.setAttribute('aria-expanded', 'true');
+  chatBubble.setAttribute('aria-label', 'Close chat');
+
+  if (chatMessages.children.length === 0) {
     addMessage('bot', GREETING_MESSAGE, true);
   }
-  if (!isOpen) {
-    setTimeout(() => chatInput?.focus(), 200);
+
+  const cleanupFocusTrap = trapFocus(chatPopup);
+
+  function handleEscape(e) {
+    if (e.key === 'Escape') {
+      closeChatHandler();
+      document.removeEventListener('keydown', handleEscape);
+    }
+  }
+
+  document.addEventListener('keydown', handleEscape);
+
+  chatPopup._cleanupFocusTrap = cleanupFocusTrap;
+  chatPopup._handleEscape = handleEscape;
+
+  setTimeout(() => chatInput?.focus(), 200);
+}
+
+function closeChatHandler() {
+  if (!chatPopup.classList.contains('open')) return;
+
+  chatPopup.classList.remove('open');
+  chatBubble.setAttribute('aria-expanded', 'false');
+  chatBubble.setAttribute('aria-label', 'Open chat');
+
+  if (chatPopup._cleanupFocusTrap) {
+    chatPopup._cleanupFocusTrap();
+    chatPopup._cleanupFocusTrap = null;
+  }
+  if (chatPopup._handleEscape) {
+    document.removeEventListener('keydown', chatPopup._handleEscape);
+    chatPopup._handleEscape = null;
+  }
+
+  chatBubble.focus();
+  lastFocusedElement = null;
+}
+
+const toggleChat = () => {
+  const isOpen = chatPopup.classList.contains('open');
+  if (isOpen) {
+    closeChatHandler();
+  } else {
+    openChat();
   }
 };
 
 if (chatBubble && chatPopup && closeChat) {
   chatBubble.addEventListener('click', toggleChat);
-  chatBubble.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleChat();
-    }
-  });
   closeChat.addEventListener('click', toggleChat);
 }
 
@@ -332,3 +400,141 @@ if (chatInput) {
    ================================ */
 const yearEl = document.getElementById('currentYear');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+/* ================================
+   Contact Form Validation & Submit
+   ================================ */
+const contactForm = document.getElementById('contact-form');
+const formErrors = document.getElementById('form-errors');
+const formSuccess = document.getElementById('form-success');
+const submitBtn = document.getElementById('submit-btn');
+const btnText = submitBtn?.querySelector('.btn-text');
+const btnLoading = submitBtn?.querySelector('.btn-loading');
+
+const validators = {
+  name: (value) => value.trim().length >= 2 ? '' : 'Name must be at least 2 characters.',
+  email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()) ? '' : 'Enter a valid email address.',
+  subject: (value) => value.trim().length >= 3 ? '' : 'Subject must be at least 3 characters.',
+  message: (value) => value.trim().length >= 10 ? '' : 'Message must be at least 10 characters.',
+};
+
+function showFieldError(fieldName, message) {
+  const errorEl = document.getElementById(`${fieldName}-error`);
+  const inputEl = document.getElementById(fieldName);
+  if (errorEl) {
+    errorEl.textContent = message;
+    errorEl.classList.remove('hidden');
+  }
+  if (inputEl) inputEl.setAttribute('aria-invalid', 'true');
+}
+
+function clearFieldError(fieldName) {
+  const errorEl = document.getElementById(`${fieldName}-error`);
+  const inputEl = document.getElementById(fieldName);
+  if (errorEl) {
+    errorEl.textContent = '';
+    errorEl.classList.add('hidden');
+  }
+  if (inputEl) inputEl.removeAttribute('aria-invalid');
+}
+
+function clearAllErrors() {
+  Object.keys(validators).forEach(clearFieldError);
+  if (formErrors) {
+    formErrors.textContent = '';
+    formErrors.classList.add('hidden');
+  }
+  if (formSuccess) {
+    formSuccess.textContent = '';
+    formSuccess.classList.add('hidden');
+  }
+}
+
+function showFormErrors(errors) {
+  if (formErrors) {
+    formErrors.innerHTML = Object.values(errors).map(e => `<p>${e}</p>`).join('');
+    formErrors.classList.remove('hidden');
+    formErrors.focus();
+  }
+}
+
+function showFormSuccess(message) {
+  if (formSuccess) {
+    formSuccess.textContent = message;
+    formSuccess.classList.remove('hidden');
+    formSuccess.focus();
+  }
+}
+
+function setSubmitting(isSubmitting) {
+  if (submitBtn) {
+    submitBtn.disabled = isSubmitting;
+    submitBtn.setAttribute('aria-busy', isSubmitting);
+  }
+  if (btnText) btnText.classList.toggle('hidden', isSubmitting);
+  if (btnLoading) btnLoading.classList.toggle('hidden', !isSubmitting);
+}
+
+async function handleContactSubmit(e) {
+  e.preventDefault();
+  clearAllErrors();
+
+  const formData = new FormData(contactForm);
+  const data = Object.fromEntries(formData);
+
+  const errors = {};
+  Object.entries(validators).forEach(([field, validator]) => {
+    const error = validator(data[field]);
+    if (error) {
+      errors[field] = error;
+      showFieldError(field, error);
+    }
+  });
+
+  if (Object.keys(errors).length > 0) {
+    showFormErrors(errors);
+    return;
+  }
+
+  setSubmitting(true);
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      showFormSuccess('Message sent successfully! I\'ll get back to you soon.');
+      contactForm.reset();
+    } else {
+      const errData = await response.json().catch(() => ({}));
+      throw new Error(errData.error || 'Failed to send message. Please try again.');
+    }
+  } catch (error) {
+    if (formErrors) {
+      formErrors.textContent = error.message || 'Network error. Please check your connection and try again.';
+      formErrors.classList.remove('hidden');
+      formErrors.focus();
+    }
+  } finally {
+    setSubmitting(false);
+  }
+}
+
+if (contactForm) {
+  contactForm.addEventListener('submit', handleContactSubmit);
+
+  Object.keys(validators).forEach(field => {
+    const input = document.getElementById(field);
+    if (input) {
+      input.addEventListener('blur', () => clearFieldError(field));
+      input.addEventListener('input', () => {
+        const error = validators[field](input.value);
+        if (error) showFieldError(field, error);
+        else clearFieldError(field);
+      });
+    }
+  });
+}
