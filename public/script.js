@@ -98,15 +98,15 @@ let chatHistory = [];
 let greetingFetched = false;
 
 const toggleChat = () => {
-  const isOpen = !chatPopup.classList.contains('hidden');
-  chatPopup.classList.toggle('hidden');
+  const isOpen = chatPopup.classList.contains('open');
+  chatPopup.classList.toggle('open');
   chatBubble.setAttribute('aria-expanded', !isOpen);
-  if (!chatPopup.classList.contains('hidden') && !greetingFetched) {
+  if (!isOpen && !greetingFetched) {
     greetingFetched = true;
     fetchGreeting();
   }
-  if (!chatPopup.classList.contains('hidden')) {
-    setTimeout(() => chatInput?.focus(), 100);
+  if (!isOpen) {
+    setTimeout(() => chatInput?.focus(), 200);
   }
 };
 
@@ -139,11 +139,10 @@ const addMessage = (sender, message, useTypingEffect = false) => {
   if (sender === 'user') {
     const escapedMessage = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const messageHtml = escapedMessage.replace(/\n/g, '<br>');
-
     const html = `
       <div class="chat-message justify-end">
         <div class="chat-bubble user"><p>${messageHtml}</p></div>
-        <div class="chat-avatar user"><i class="fas fa-user" style="font-size:0.75rem"></i></div>
+        <div class="chat-avatar user"><i class="fas fa-user"></i></div>
       </div>
     `;
     chatMessages.insertAdjacentHTML('beforeend', html);
@@ -155,7 +154,7 @@ const addMessage = (sender, message, useTypingEffect = false) => {
       const messageHtml = marked.parse(message);
       const html = `
         <div class="chat-message">
-          <div class="chat-avatar bot"><i class="fas fa-robot" style="font-size:0.75rem"></i></div>
+          <div class="chat-avatar bot"><i class="fas fa-robot"></i></div>
           <div class="chat-bubble bot">${messageHtml}</div>
         </div>
       `;
@@ -169,7 +168,7 @@ const typeMessage = (message) => {
   const messageId = 'bot-msg-' + Date.now();
   const html = `
     <div class="chat-message">
-      <div class="chat-avatar bot"><i class="fas fa-robot" style="font-size:0.75rem"></i></div>
+      <div class="chat-avatar bot"><i class="fas fa-robot"></i></div>
       <div class="chat-bubble bot">
         <div id="${messageId}"></div><span class="typing-cursor"></span>
       </div>
@@ -206,12 +205,11 @@ const handleChatSubmit = async (e) => {
 
   addMessage('user', userMessage);
   chatInput.value = '';
-
   chatHistory.push({ "role": "user", "content": userMessage });
 
   const typingHtml = `
     <div id="typing-indicator" class="chat-message">
-      <div class="chat-avatar bot"><i class="fas fa-robot" style="font-size:0.75rem"></i></div>
+      <div class="chat-avatar bot"><i class="fas fa-robot"></i></div>
       <div class="chat-bubble bot">
         <div class="typing-indicator">
           <span class="typing-dot"></span>

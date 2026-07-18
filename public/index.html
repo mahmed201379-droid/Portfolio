@@ -624,12 +624,22 @@
 
   <!-- Chatbot -->
   <div id="chat-bubble" role="button" tabindex="0" aria-expanded="false" aria-controls="chat-popup" aria-label="Open chat">
-    <i class="fas fa-comments"></i>
+    <i class="fas fa-comment-dots"></i>
   </div>
 
-  <div id="chat-popup" class="hidden" role="dialog" aria-labelledby="chat-dialog-title">
+  <div id="chat-popup" role="dialog" aria-labelledby="chat-dialog-title">
     <div class="chat-header">
-      <h3 id="chat-dialog-title">ByteBuddy</h3>
+      <div class="chat-header-info">
+        <div class="chat-header-avatar">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div>
+          <div class="chat-header-name" id="chat-dialog-title">ByteBuddy</div>
+          <div class="chat-header-status">
+            <span class="status-dot"></span>Online
+          </div>
+        </div>
+      </div>
       <button id="close-chat" aria-label="Close chat">&times;</button>
     </div>
     <div id="chat-messages" aria-live="polite">
@@ -637,8 +647,8 @@
     </div>
     <div class="chat-input-area">
       <form id="chat-form">
-        <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off">
-        <button type="submit" class="btn btn-primary">Send</button>
+        <input type="text" id="chat-input" placeholder="Ask me anything..." autocomplete="off">
+        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i></button>
       </form>
     </div>
   </div>
