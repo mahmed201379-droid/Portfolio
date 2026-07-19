@@ -1,6 +1,6 @@
 const GROQ_API_BASE = 'https://api.groq.com/openai/v1/chat/completions';
 const DEFAULT_TIMEOUT_MS = 60000;
-const MAX_RESPONSE_TOKENS = 500;
+const MAX_RESPONSE_TOKENS = Number(process.env.GROQ_MAX_RESPONSE_TOKENS) || 1024;
 
 function stripThinking(content) {
   if (!content) return content;

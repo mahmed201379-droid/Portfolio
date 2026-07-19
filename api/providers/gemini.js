@@ -1,6 +1,6 @@
 const GEMINI_API_BASE = 'https://generativelanguage.googleapis.com/v1beta/models';
 const DEFAULT_TIMEOUT_MS = 60000;
-const MAX_OUTPUT_TOKENS = 500;
+const MAX_OUTPUT_TOKENS = Number(process.env.GEMINI_MAX_OUTPUT_TOKENS) || 1024;
 
 function buildGeminiContents(systemPrompt, history, message) {
   const contents = [];

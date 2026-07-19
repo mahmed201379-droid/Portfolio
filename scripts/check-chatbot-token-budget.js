@@ -52,7 +52,7 @@ ${profile.summary}
 ${profile.linkedin}
 
 ### Behavior Rules
-- Keep answers short and focused (2-3 paragraphs max).
+- Keep answers concise and focused (2-3 paragraphs max).
 - Use plain language; avoid unnecessary jargon.
 - Don't use tables, always answer in paragraph format with bullet points for lists.
 - If asked for contact info, provide the email and LinkedIn from the profile.
