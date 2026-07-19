@@ -68,6 +68,9 @@
 </head>
 
 <body>
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Page scroll progress"></div>
+
   <!-- Navigation -->
   <header>
     <nav class="container" aria-label="Main navigation">
@@ -80,9 +83,14 @@
         <a href="#publications">Research</a>
         <a href="#contact">Contact</a>
       </div>
-      <button id="menuToggle" class="mobile-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle navigation menu">
-        <i class="fas fa-bars"></i>
-      </button>
+      <div style="display:flex;align-items:center">
+        <button id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="menuToggle" class="mobile-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle navigation menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
     </nav>
     <div id="mobileMenu" class="hidden">
       <a href="#about">About</a>
@@ -120,7 +128,7 @@
     </section>
 
     <!-- About -->
-    <section id="about">
+    <section id="about" data-section="about">
       <div class="container">
         <span class="section-label">About</span>
         <h2 class="section-title">About Me</h2>
@@ -148,7 +156,7 @@
     </section>
 
     <!-- Experience -->
-    <section id="experience">
+    <section id="experience" data-section="experience">
       <div class="container">
         <span class="section-label">Experience</span>
         <h2 class="section-title">Experience</h2>
@@ -187,7 +195,7 @@
     </section>
 
     <!-- Projects -->
-    <section id="projects">
+    <section id="projects" data-section="projects">
       <div class="container">
         <span class="section-label">Projects</span>
         <h2 class="section-title">Featured Projects</h2>
@@ -346,7 +354,7 @@
     </section>
 
     <!-- Research & Publications -->
-    <section id="publications">
+    <section id="publications" data-section="publications">
       <div class="container">
         <span class="section-label">Research</span>
         <h2 class="section-title">Research &amp; Publications</h2>
@@ -449,7 +457,7 @@
     </section>
 
     <!-- Skills -->
-    <section id="skills">
+    <section id="skills" data-section="skills">
       <div class="container">
         <span class="section-label">Skills</span>
         <h2 class="section-title">Technical Skills</h2>
@@ -528,7 +536,7 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact">
+    <section id="contact" data-section="contact">
       <div class="container">
         <span class="section-label">Contact</span>
         <h2 class="section-title">Let's Collaborate</h2>

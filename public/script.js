@@ -1,4 +1,47 @@
 /* ================================
+   Reading Progress Bar
+   ================================ */
+const progressBar = document.getElementById('reading-progress');
+
+function updateProgressBar() {
+  if (!progressBar) return;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = progress + '%';
+  progressBar.setAttribute('aria-valuenow', Math.round(progress));
+}
+
+/* ================================
+   Theme Toggle
+   ================================ */
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = themeToggle?.querySelector('i');
+
+function getPreferredTheme() {
+  const stored = localStorage.getItem('theme');
+  if (stored) return stored;
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+}
+
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  if (themeIcon) {
+    themeIcon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+  }
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    setTheme(current === 'light' ? 'dark' : 'light');
+  });
+}
+
+setTheme(getPreferredTheme());
+
+/* ================================
    Mobile Menu Toggle
    ================================ */
 const menuToggle = document.getElementById('menuToggle');
@@ -8,11 +51,17 @@ if (menuToggle && mobileMenu) {
   menuToggle.addEventListener('click', () => {
     const expanded = mobileMenu.classList.toggle('hidden');
     menuToggle.setAttribute('aria-expanded', !expanded);
+    const icon = menuToggle.querySelector('i');
+    if (icon) {
+      icon.className = expanded ? 'fas fa-bars' : 'fas fa-times';
+    }
   });
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.classList.add('hidden');
       menuToggle.setAttribute('aria-expanded', 'false');
+      const icon = menuToggle.querySelector('i');
+      if (icon) icon.className = 'fas fa-bars';
     });
   });
 }
@@ -41,26 +90,46 @@ if (backToTopButton) {
    ================================ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-
     const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
     const targetElement = document.querySelector(targetId);
 
     if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop - 80,
-        behavior: 'smooth'
-      });
+      e.preventDefault();
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
         mobileMenu.classList.add('hidden');
+        const icon = menuToggle?.querySelector('i');
+        if (icon) icon.className = 'fas fa-bars';
       }
     }
   });
 });
 
 /* ================================
-   Fade-in Animations on Scroll
+   Scrollspy Navigation
+   ================================ */
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('[data-section]');
+
+if (navLinks.length > 0 && sections.length > 0) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => sectionObserver.observe(s));
+}
+
+/* ================================
+   Staggered Fade-in Animations
    ================================ */
 const fadeElements = document.querySelectorAll('.fade-in');
 
@@ -83,6 +152,16 @@ document.addEventListener('DOMContentLoaded', () => {
     el.classList.add('is-visible');
   });
 });
+
+/* ================================
+   Scroll-based Progress & State Updates
+   ================================ */
+function onScroll() {
+  updateProgressBar();
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+updateProgressBar();
 
 /* ================================
    Chatbot (ByteBuddy)
@@ -318,6 +397,15 @@ const toggleChat = () => {
 if (chatBubble && chatPopup && closeChat) {
   chatBubble.addEventListener('click', toggleChat);
   closeChat.addEventListener('click', toggleChat);
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      chatBubble.classList.add('pulse');
+      chatBubble.addEventListener('animationend', () => {
+        chatBubble.classList.remove('pulse');
+      }, { once: true });
+    }, 2000);
+  });
 }
 
 const handleChatSubmit = async (e) => {
