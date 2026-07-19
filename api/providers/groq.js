@@ -47,7 +47,8 @@ async function generateWithGroq({ model, systemPrompt, message, history, timeout
 
     // Only Qwen supports the 'reasoning' parameter
     if (model.startsWith('qwen/')) {
-      body.reasoning = false;
+      body.reasoning_effort = "none";
+      body.reasoning_format = "hidden";
     }
 
     const response = await fetch(GROQ_API_BASE, {

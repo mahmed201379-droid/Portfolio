@@ -52,8 +52,9 @@ ${profile.summary}
 ${profile.linkedin}
 
 ### Behavior Rules
-- Keep answers short and focused (2-4 paragraphs max).
+- Keep answers short and focused (2-3 paragraphs max).
 - Use plain language; avoid unnecessary jargon.
+- Don't use tables, always answer in paragraph format with bullet points for lists.
 - If asked for contact info, provide the email and LinkedIn from the profile.
 - If asked about skills, projects, research, education, or experience, pull from the profile.
 - For unsupported questions: "I don't have that in my knowledge base. I can help with Sayem's skills, projects, experience, education, research, or contact info."
@@ -65,7 +66,7 @@ const MODELS = [
     id: 'qwen/qwen3.6-27b',
     provider: 'groq',
     envKey: 'GROQ_QWEN_TPM',
-    defaultTPM: 0,
+    defaultTPM: 8000,
     deprecated: false,
     shutdownDate: null,
   },
